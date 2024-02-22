@@ -9,6 +9,8 @@ const connection = mysql.createConnection({
   user: 'root',
   password: '5475',
   database: 'Muntz'
+  ,port:'3306'
+
 });
 
 // express.json() middleware 추가
