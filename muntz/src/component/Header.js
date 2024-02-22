@@ -26,10 +26,12 @@ export default function Header() {
   return (
     <div className={style.header}>
       <div className={style.LogoBox}>
+        <div className={style.MG}>
         <Link href="/">
           <img className={style.LogoImg} src="image/logo.jpg" alt="Logo" />
           <span className={style.Logo}>muntz</span>
         </Link>
+        </div>
       </div>
       <div className={style.MenuBox}>
         <ul className={style.Menu}>

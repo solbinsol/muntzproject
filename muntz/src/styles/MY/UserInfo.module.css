@@ -1,0 +1,32 @@
+.MyContent h2{
+    font-family: 'Pretendard-Regular';
+    margin-bottom: 10px;
+
+}
+.MyPage{
+    width: 100%;
+    float: left;
+}
+.MyContent{
+    width: 360px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.UserInfo{
+    height: 25px;
+    margin-top: 10px;
+}
+.UserInfo .KP{
+    width: 50%;
+    float: left;
+    font-family: 'Pretendard-Regular';
+}
+.UserInfo .EP{
+    float: left;
+    width: 50%;
+    font-weight: bold;
+}
+.UserInfo #N{
+    font-family: 'Pretendard-Regular' !important;
+
+}

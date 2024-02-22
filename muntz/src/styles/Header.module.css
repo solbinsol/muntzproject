@@ -1,4 +1,100 @@
+@media screen and (max-width:1281px) and (min-width:791px){
+    .LogoBox{
+        width: 5% !important;
+    }
+    .Logo{
+        display: none;
+    }
+    .MenuBox{
+        width: 95% !important;
+    }
+
+}
+@media screen and (max-width:790px) and (min-width:541px){
+    .LogoBox{
+        width: 7% !important;
+    }
+    .Logo{
+        display: none;
+    }
+    .MenuBox{
+        width: 93% !important;
+    }
+
+}
+
+@media screen and (max-width:540px) and (min-width:451px){
+    .LogoBox{
+        width: 9% !important;
+    }
+    .Logo{
+        display: none;
+    }
+    .MenuBox{
+        width: 91% !important;
+    }
+
+}
+@media screen and (max-width:450px) and (min-width:423px){
+    .LogoBox{
+        width: 11% !important;
+    }
+    .Logo{
+        display: none;
+    }
+    .MenuBox{
+        width: 89% !important;
+    }
+
+}
+@media screen and (max-width:422px) and (min-width:10px){
+    .LogoBox{
+        width: 100% !important;
+        margin: 0 auto !important;
+        height: 30px;
+        border-bottom: 1px solid gray !important;
+
+
+    }
+    .Logo{
+        
+        line-height: 0 !important;
+        margin-top: 14.5px;
+        font-size: 16px !important;
+    }
+    .LogoImg{
+        width: 16px !important;
+        height: 16px !important;
+        margin-top:7px !important;
+    }
+
+    .MG{
+        width: 20%;
+        height: 40px;
+        margin: 0 auto !important;
+    }
+    .MenuBox{
+        height: 25px;
+        width: 100% !important;
+        float: left;
+    }
+    .Menu li{
+        line-height: 25px !important;
+        font-size: 12px;
+        color:gray !important;
+
+    }
+    .RMenu li{
+        line-height: 25px !important;
+
+        font-size: 12px;
+        color:gray !important;
+    }
+
+
+}
 /* header 헤더  */
+
 .header{
     width: 100% !important;
     height: 50px;
@@ -34,8 +130,6 @@
 }
 
 .MenuBox{
-
-
     line-height: 63px;
     width: 90%;
     float: left;
@@ -44,7 +138,7 @@
 }
 
 
-.Menu{
+.Menu{ 
     width: 50%;
     float: left;
 }

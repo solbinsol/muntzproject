@@ -1,0 +1,31 @@
+
+.MyPage{
+    width: 100%;
+    float: left;
+}
+.MyContent{
+    width: 360px;
+    
+    margin: 0 auto;
+}
+.MyNav{ 
+    float: left;
+    width: 360px;
+    margin: 0 auto;
+    height: 300px;
+
+}
+#TLi{
+}
+.MyNav h2{
+    margin-top: 30px;
+}
+.MyNav h3{
+    padding: 10px 0 10px 0;
+    font-family: 'Pretendard-Regular';
+
+}
+.MyNav li{
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
