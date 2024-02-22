@@ -40,7 +40,7 @@ export default function DetailPage() {
           }
   
           // 기존의 상품 정보를 가져오는 API
-          const productResponse = await axios.get(`http://172.30.1.71:5000/api/product/${product_id}`);
+          const productResponse = await axios.get(`http://115.23.171.88:5000/api/product/${product_id}`);
   
           // 새로 추가한 ProductDetails 정보를 가져오는 API
           const productDetailsResponse = await axios.get(`http://172.30.1.71:5000/api/detail/${product_id}`);

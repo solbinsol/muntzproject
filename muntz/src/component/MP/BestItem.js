@@ -13,7 +13,7 @@ export default function NewProduct(){
     const fetchData = async () => {
       try {
         // 좋아요(likes)가 높은 순으로 상품 조회
-        const response = await axios.get('http://172.30.1.71:5000/api/bestitem');
+        const response = await axios.get('http://115.23.171.88:5000/api/bestitem');
 
         const slicedBestItems = response.data.slice(0, 4); // 최대 8개까지만 렌더링
         setBestItems(slicedBestItems);
