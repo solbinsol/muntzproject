@@ -26,6 +26,6 @@ app.use('/api/user_likes', likesRouter);
 app.use('/api/AddProduct', AddProductRouter);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`서버가 http://localhost:${PORT} 에서 실행 중입니다.`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`서버가 http://0.0.0.0:${PORT} 에서 실행 중입니다.`);
 });
