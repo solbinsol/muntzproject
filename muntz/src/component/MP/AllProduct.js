@@ -10,7 +10,7 @@ export default function NewProduct() {
     // 서버로부터 데이터를 가져오는 함수
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products');
+        const response = await axios.get('http://172.30.1.71:5000/api/products');
         const slicedProducts = response.data.slice(0, 300); // 최대 4개까지만 렌더링
 
         setProducts(slicedProducts);

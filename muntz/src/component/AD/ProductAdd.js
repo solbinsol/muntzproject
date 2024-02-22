@@ -39,7 +39,7 @@ export default function ProductAdd() {
       }));
 
 
-      const response = await axios.post("http://localhost:5000/api/AddProduct/AddProduct", {
+      const response = await axios.post("http://172.30.1.71:5000/api/AddProduct/AddProduct", {
         productName,
         price,
         categoryId,

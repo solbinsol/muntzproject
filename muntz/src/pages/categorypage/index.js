@@ -32,7 +32,7 @@ export default function CategoryPage() {
         }
   
         // API 호출 시에 정렬 방식도 함께 전달
-        const response = await axios.get(`http://localhost:5000/api/category?categoryNo=${categoryNo}&sortBy=${sortBy}`);
+        const response = await axios.get(`http://172.30.1.71:5000/api/category?categoryNo=${categoryNo}&sortBy=${sortBy}`);
         console.log('API Response:', response.data);  // 추가
         setProducts(response.data);
       } catch (error) {
