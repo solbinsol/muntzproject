@@ -1,0 +1,109 @@
+
+@media screen and (max-width:768px) {
+
+    .footer .Fjoin{
+        width: 28%;
+        font-size: 8px;
+        margin-right: 2%;
+    }
+    .footer .Btn{
+        width: 80%;
+    }
+    .footer .Fitem
+    {
+        font-size: 8px;
+    }
+    .footer .List{
+    }
+    .footer .Rfooter{
+        width: 40%;
+        margin-right: 21.5%;
+    }
+    .ListAll{
+        /* width: 10%; */
+        position: relative;
+        right: 20%;
+        bottom: 20px;
+        width: 100%;
+        background-origin: padding-box;
+    }
+
+
+}
+
+
+
+
+.footer{
+    float: left;
+    position: relative;
+    bottom: 0;
+    
+    width: 100%;height:300px;
+    margin-top: 0px;
+    background-color: black;
+}
+.Fitem{
+    color:white !important;
+
+    margin-top: 40px;
+}
+.Fitem p{
+    font-size: 10px;
+    
+}
+.Lfooter{
+    float: left;
+    list-style-type: disc;
+    width: 300px;
+    margin: 20px;
+    color:white !important;
+    
+}
+.Lfooter ul li{
+    color:white !important;
+
+}
+.List{
+    float: left;
+    color:white !important;
+}
+.Rfooter{
+    float: right;
+    width: 20%;
+    color:white !important;
+
+}
+.Fitem{
+    color:white !important;
+    height: 40px;
+}
+.Fjoin{
+    width: 20%;
+    float: right;
+    color:white !important;
+}
+.Fjoin p h4{
+    color: white !important;
+
+}
+.Fjoin p {
+    color: white !important;
+    font-family: 'Pretendard-Regular';
+}
+.Rfooter h4{
+    color:white !important;
+}
+.Rfooter p{
+    font-family: 'Pretendard-Regular';
+    color:white !important;
+}
+.Btn{
+    width:45%;
+    margin-top: 20px;
+    height: 35px;
+    background-color: black;
+    color:white;
+    border: 1px solid white;
+    cursor: pointer;
+}

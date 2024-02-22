@@ -1,0 +1,83 @@
+/* header 헤더  */
+.header{
+    width: 100% !important;
+    height: 50px;
+    position: relative;
+    background-color: white;
+ 
+}
+.LogoBox{
+    cursor: pointer;
+    width: 10%;
+    float: left;
+
+}
+.Logo{
+    color:white;
+    color:black;
+    font-size: 25px;
+    text-align: center;
+    height: 60px;
+    line-height:60px;
+    font-weight: bold;
+    margin-left: 5px;
+    float: left;
+}
+
+.LogoImg{
+    float: left;
+    margin-top:15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-left: 15px;
+}
+
+.MenuBox{
+
+
+    line-height: 63px;
+    width: 90%;
+    float: left;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+.Menu{
+    width: 50%;
+    float: left;
+}
+
+.MenuBox li{
+    color:white;
+    color:black;
+    float: left;
+    margin-right:0%;
+    margin-left: 5%;
+}
+
+
+.RMenu{
+    width: 50%;
+    float: right;
+}
+.RMenu li{
+    float: right;
+    padding: 0;
+    margin-right:0%;
+    margin-left: 0%;
+    cursor: pointer;
+}
+.Serch{
+    margin-right: 2% !important;
+}
+.SU{
+    margin-right: 2% !important;
+}
+
+
+.UN{
+    font-family: 'Pretendard-Regular' !important;
+    margin-right: 2% !important;
+}

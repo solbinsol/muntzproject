@@ -1,0 +1,24 @@
+.MainPage{
+    width: 100%;
+}
+
+/* 메인페이지 */
+/* 메인이미지 */
+.MainImg{
+    width: 100%;
+    float: left;
+}
+.MainImg img{
+    width: 100%;
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+}
+.Product{
+    margin-bottom: 100px ;
+}
+
+.MainContent{
+    margin: 0 auto;
+    width: 80%;
+}

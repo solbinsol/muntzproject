@@ -1,0 +1,32 @@
+@font-face { /* 애플산돌고딕 폰트 적용 */
+  font-family: "InstarSans";
+  src: url("/font/InstagramSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+} /* 이후 "SDGothic"으로 폰트 적용 가능 */
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-style: normal;
+}
+ /* NoteBook:1280 x 720 */
+
+@media screen and (max-width: 1280px) and (min-width:376px){
+  *{
+    max-width: 1280px !important;  
+  }
+}
+/* IOS */
+@media screen and (max-width: 375px) and (min-width:100px) {
+  
+}
+
+*{
+  list-style: none;
+  text-decoration: none;
+  color:black;
+  max-width: 1920px;
+  margin: 0;
+  padding: 0;
+  font-family: "InstarSans",serif;
+}

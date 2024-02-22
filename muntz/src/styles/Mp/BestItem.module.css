@@ -1,0 +1,10 @@
+/* NewProduct 신상 , 새 옷*/
+.NewProduct{
+    float: left;
+    width: 100%;
+}
+.NewProduct h2{
+    margin-top: 15px;
+    text-align: center;
+}
+

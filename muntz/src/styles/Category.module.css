@@ -1,0 +1,26 @@
+.CategoryPage{
+    width: 80%;
+    margin-left: 10%;
+    float: left;
+    margin-top: 30px;
+}
+.CategoryContent{
+    height: 600px;
+}
+.Category{
+    margin: 0;
+    padding: 0;
+    float: left;
+    line-height: 20px;
+    
+}
+.Cheader select{
+    margin-left: 5px;
+    margin-top: 5px;
+    border: 0px solid black;
+    font-family: 'Pretendard-Regular' !important;
+}
+.Cheader select option{
+    font-family: 'Pretendard-Regular' !important;
+
+}

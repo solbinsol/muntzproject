@@ -1,0 +1,150 @@
+.LoginPage{
+    width: 100%;
+}
+.LoginBox{
+    width: 360px;
+    margin: 0 auto;
+}
+.LoginBox h3{
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+.IDBox{
+    width: 100%;
+}
+.IDBox p{
+    width: 45%;
+    float: left;
+    margin-bottom: 10px;
+
+}
+.IDBox input{
+    margin-bottom: 10px;
+
+    width: 50%;
+    float: left;
+}
+
+#PW{
+    margin: 0 !important;
+}
+.Sm{
+    width: 30% !important;
+}
+
+
+.TermsBox{
+    float: left;
+    width: 360px;
+    
+}
+.TermsBox h3{
+    margin-top: 15px;
+    font-family: 'Pretendard-Regular' !important;
+
+}
+.TermsBox table{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    border:  1px solid black;
+}
+.TermsBox table td{
+    padding: 10px 0 10px 0;
+    border:  1px solid black;
+}
+.TermsBox table td input{
+    position: relative;
+    top:5px;
+    width: 20px;
+    height: 20px;
+    margin-left: 2%;
+    background-color: red;
+}
+.TermsBox table td span{
+    line-height: 30px;
+    margin-left: 2%;
+    font-family: 'Pretendard-Regular' !important;
+
+}
+
+.LoginBtn{
+    width: 100%;
+    height: 50px;
+    color:white;
+    
+    background-color: black;
+    margin-bottom: 100px;
+}
+.drop{
+    float: right;
+    width: 30px;
+
+    height: 30px;
+}
+.drop img{
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+
+
+@keyframes slideIn {
+    from {
+      height: 50px;
+      opacity: 0;
+    }
+    to {
+      height: 150px;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      height: auto;
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+
+.Terms{
+    float: left;
+    width: 100%;
+    animation: slideIn 0.3s ease-in-out forwards;
+
+}
+.Terms.visible {
+
+}
+.Terms.hidden {
+    opacity: 1 !important;
+    height: 1000px !important;
+    animation: slideOut 0.5s ease-in-out forwards;
+    
+}
+.Terms p{
+
+    font-family: 'Pretendard-Regular' !important;
+
+}
+
+.Personal{
+    width: 100%;
+    float: left;
+    animation: slideIn 0.3s ease-in-out forwards;
+}
+.Personal p{
+    font-family: 'Pretendard-Regular' !important;
+
+}
+
+.Personal.hidden {
+    
+    animation: slideOut 10s ease-in-out forwards;
+}

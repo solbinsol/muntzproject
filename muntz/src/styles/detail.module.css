@@ -1,0 +1,128 @@
+.DetailPage{
+    width: 100%;
+}
+
+.DetailBox{
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 50px;
+    height: 600px;
+}
+.ImgBox{
+    float: left;
+    width: 500px;
+    height: 550px;
+    background-color: gray;
+}
+.ImgBox img{
+    width: 100%;
+    height: 100%;
+}
+.DetailText{
+    float: left;
+    width: 480px;
+    margin-left: 20px;
+}
+
+
+.DetailText p{
+    /* font-family: 'Pretendard-Regular' !important; */
+}
+.Gray{
+    color:gray;
+    font-family: 'Pretendard-Regular' !important;
+    font-size: 12px;
+    position: relative;
+    bottom: 2px;
+}
+.ClosetName{
+    font-family: 'Pretendard-Regular' !important;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.Price{
+    font-family: 'Pretendard-Regular' !important;
+    margin-top: 25px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.Nav{
+    width: 100%;
+    float: left;
+}
+.Nav p {
+    float: left;
+    cursor: pointer;
+    margin-right: 20px;
+    color:gray;
+}
+.description{
+    width: 100%;
+    float: left;
+    height: 100px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.description p{
+    color:black;
+    font-family: 'Pretendard-Regular' !important;
+
+}
+.delivery{
+    margin-top: 10px;
+    width: 100%;
+    height: 100px;
+    float: left;
+}
+.delivery li{
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-family: 'Pretendard-Regular' !important;
+    
+     
+}
+.SizeTable{
+    margin-top: 15px;
+    width: 100%;
+    float: left;
+}
+.SizeTable table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 100%;
+    font-family: 'Pretendard-Regular' !important;
+}
+.SizeTable th {
+    border: 1px solid black;
+    font-family: 'Pretendard-Regular' !important;
+}
+.SizeTable td {
+    border: 1px solid black;
+    font-family: 'Pretendard-Regular' !important;
+    text-align: center;
+}
+.SizeSelect{
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+    
+}
+
+.SizeSelect option{
+    font-family: 'Pretendard-Regular' !important;
+
+}
+.PP{
+    font-family: 'Pretendard-Regular' !important;
+}
+.selectedTab{
+    color:black !important;
+    text-decoration: underline;
+}
+
+.TableT{
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-family: 'Pretendard-Regular' !important;
+}
