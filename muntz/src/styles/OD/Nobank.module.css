@@ -1,0 +1,20 @@
+
+.Nobank p{
+    margin-top: 15px;
+    font-family: 'Pretendard-Regular';
+    font-size: 16px;
+}
+.LeftP{
+    float: left;
+    width: 30%;
+}
+.RightP{
+    float: right;
+    width: 70%;
+}
+
+#RI{
+    float: right;
+    margin-top: 15px;
+    width: 68%;
+}
