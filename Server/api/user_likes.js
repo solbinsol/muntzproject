@@ -15,7 +15,7 @@ app.use(cors()); // 모든 도메인에서의 요청을 허용 (개발용)
 const router = express.Router();
 
 const connection = mysql.createConnection({
-  host: '115.23.171.88',
+  host: 'localhost',
   user: 'root',
   password: '5475',
   database: 'Muntz'

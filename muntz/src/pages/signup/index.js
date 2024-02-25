@@ -49,7 +49,7 @@ export default function SignUp() {
       
         try {
           // 회원가입 정보를 서버로 전송
-          const response = await axios.post('http://115.23.171.88:5000/api/auth/signup', formData);
+          const response = await axios.post('http://localhost:5000/api/auth/signup', formData);
       
           // 회원가입 성공 시 로직 (예: 리다이렉트 등)
           console.log(response.data);

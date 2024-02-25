@@ -181,3 +181,17 @@
     color:white;
     background-color: black; /* 바구니 상태일 때의 배경색 */
     }
+
+.Selecter{
+    width: 100%;
+    float: left;
+}
+    .Selecter select{
+        width: 100%;
+        font-family: 'Pretendard-Regular' !important;
+
+    }
+    .Selecter option{
+        font-family: 'Pretendard-Regular' !important;
+
+    }

@@ -17,6 +17,12 @@ export default function DetailPage() {
     const currentProductID = router.query.product_id;
     const [product, setProduct] = useState(null);
   
+    const [stockData, setStockData] = useState([]); // 재고 정보 상태 추가
+
+    const [colors, setColors] = useState([]);
+    const [sizeOptions, setSizeOptions] = useState([]);
+
+    
     useEffect(() => {
       // 좋아요와 바구니 상태 초기화
       if (product) {
@@ -40,23 +46,33 @@ export default function DetailPage() {
           }
   
           // 기존의 상품 정보를 가져오는 API
-          const productResponse = await axios.get(`http://115.23.171.88:5000/api/product/${product_id}`);
+          const productResponse = await axios.get(`http://localhost:5000/api/product/${product_id}`);
   
           // 새로 추가한 ProductDetails 정보를 가져오는 API
-          const productDetailsResponse = await axios.get(`http://115.23.171.88:5000/api/detail/${product_id}`);
+          const productDetailsResponse = await axios.get(`http://localhost:5000/api/detail/${product_id}`);
   
+          const category_id = productResponse.data.category_id;
+
           // 제품의 사이즈 정보를 가져오는 API
-          const sizeResponse = await axios.get(`http://115.23.171.88:5000/api/size/${product_id}`);
-  
+          const sizeResponse = await axios.get(`http://localhost:5000/api/size/${category_id}/${product_id}`);
+          console.log('Size API Response:', sizeResponse.data);
+
           // 제품의 재고 정보를 가져오는 API
-          const stockResponse = await axios.get(`http://115.23.171.88:5000/api/stock/${product_id}`);
+          const stockResponse = await axios.get(`http://localhost:5000/api/stock/${product_id}`);
+          console.log('Stock API Response:', stockResponse.data);
   
+          setStockData(stockResponse.data); // 재고 정보 상태 업데이트
+  
+          const colorResponse = await axios.get(`http://localhost:5000/api/color/${product_id}`);
+          setColors(colorResponse.data);
+
+          
           // 로그인한 경우에만 좋아요 및 바구니 상태를 가져옴
           let userLikeResponse = null;
           let userBasResponse = null;
   
           if (storedUser) {
-            userLikeResponse = await axios.post('http://115.23.171.88:5000/api/user_likes/get-like', {
+            userLikeResponse = await axios.post('http://localhost:5000/api/user_likes/get-like', {
               user_id: storedUser.user_id,
               product_id,
             });
@@ -65,7 +81,7 @@ export default function DetailPage() {
                 
             if (!userLikeResponse.data) {
                 // 레코드가 없으면 새로운 레코드 추가
-                await axios.post('http://115.23.171.88:5000/api/user_likes/insert-like', {
+                await axios.post('http://localhost:5000/api/user_likes/insert-like', {
                   user_id: storedUser.user_id,
                   product_id,
                   liked: 0, // 초기값
@@ -73,7 +89,7 @@ export default function DetailPage() {
                 });
                 console.log("asdasdasdasdasdas");
               }
-            userBasResponse = await axios.post('http://115.23.171.88:5000/api/user_likes/get-basket', {
+            userBasResponse = await axios.post('http://localhost:5000/api/user_likes/get-basket', {
               user_id: storedUser.user_id,
               product_id,
             });
@@ -91,7 +107,7 @@ export default function DetailPage() {
           };
           setProduct(productWithDetailsAndSize);
   
-          await axios.post('http://115.23.171.88:5000/api/increase-view-count', { product_id });
+          await axios.post('http://localhost:5000/api/increase-view-count', { product_id });
         } catch (error) {
           console.error('API 호출 오류dd:', error);
         }
@@ -109,7 +125,7 @@ export default function DetailPage() {
         }
   
         // 서버에 토글된 정보를 전송
-        const response = await axios.post('http://115.23.171.88:5000/api/user_likes/toggle-like', {
+        const response = await axios.post('http://localhost:5000/api/user_likes/toggle-like', {
           user_id: currentUserID,
           product_id: currentProductID,
         });
@@ -139,7 +155,7 @@ export default function DetailPage() {
           return;
         }
   
-        const response = await axios.post('http://115.23.171.88:5000/http://172.30.1.71:5000/api/user_likes/toggle-basket', {
+        const response = await axios.post('http://localhost:5000/http://172.30.1.71:5000/api/user_likes/toggle-basket', {
           user_id: currentUserID,
           product_id: currentProductID,
         });
@@ -214,55 +230,52 @@ export default function DetailPage() {
                       <li>택배사 : </li>
                       <li>배송비 : </li>
                     </div>
+                    <div className={style.Selecter}>
+
+                        <select>
+                        {colors.map((color, index) => (
+                          <option key={index}>{color}</option>
+                        ))}
+                        </select>
+                                                <select>
+                          <option>사이즈종류</option>
+                        </select>
+                    </div>
                     <div className={style.SizeTable}>
                       <p className={style.TableT}>* 측정 방식에 따라 약간의 차이가 있을 수 있습니다. </p>
                       <table>
                         <thead>
                           <tr>
-                            <th>사이즈</th>
-                            {product.sizes &&
-                              product.sizes.map((size, index) => <th key={index}>{size.size_type}</th>)}
+                            {/* product.sizes 배열의 첫 번째 객체를 기준으로 th를 생성합니다. */}
+                            {product.sizes && Object.keys(product.sizes[0]).map((key) => {
+                              // "size", "length", "chest", "shoulder" 중 하나인 경우에만 th를 렌더링합니다.
+                              if (["size", "length", "chest", "shoulder"].includes(key)) {
+                                return <th key={key}>{key}</th>;
+                              }
+                              return null;
+                            })}
                           </tr>
                         </thead>
                         <tbody>
-                          {['S', 'M', 'L'].map((sizeType, sizeIndex) => (
-                            <tr key={sizeIndex}>
-                              <td>{sizeType}</td>
-                              {product.sizes &&
-                                product.sizes.map((size, sizeIndex) => (
-                                  // size_value가 존재하는 경우에만 해당 td를 렌더링
-                                  <React.Fragment key={sizeIndex}>
-                                    {size[`size_value_${sizeType.toLowerCase()}`] && (
-                                      <td>{size[`size_value_${sizeType.toLowerCase()}`]}</td>
-                                    )}
-                                  </React.Fragment>
-                                ))}
-                            </tr>
-                          ))}
+                        {product.sizes &&
+                            Array.from(new Set(product.sizes.map((size) => size.size))).map((sizeType, sizeIndex) => (
+                              <tr key={sizeIndex}>
+                                <td>{sizeType}</td>
+                                {product.sizes
+                                  .filter((size) => size.size === sizeType)
+                                  .map((sizeData, sizeIndex) => (
+                                    <React.Fragment key={sizeIndex}>
+                                      <td>{sizeData.length}</td>
+                                      <td>{sizeData.chest}</td>
+                                      <td>{sizeData.shoulder}</td>
+                                    </React.Fragment>
+                                  ))}
+                              </tr>
+                            ))}
                         </tbody>
                       </table>
-                      <select className={style.SizeSelect}>
-                        {['S', 'M', 'L']
-                          .filter(
-                            (sizeType) =>
-                              product.sizes.some((size) => size[`size_value_${sizeType.toLowerCase()}`])
-                          )
-                          .map((sizeType, index) => (
-                            <option
-                              key={index}
-                              disabled={
-                                product.stock &&
-                                product.stock[`stock_quantity_${sizeType.toLowerCase()}`] === 0
-                              }
-                            >
-                              {sizeType}{' '}
-                              {product.stock &&
-                                product.stock[`stock_quantity_${sizeType.toLowerCase()}`] === 0 &&
-                                '(품절)'}
-                            </option>
-                          ))}
-                      </select>
                     </div>
+
                     <div className={style.BtnBox}>
                       <button className={style.BtnBuy}>BUY NOW</button>
   

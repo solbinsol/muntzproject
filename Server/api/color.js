@@ -1,16 +1,15 @@
-// detail.js
-
+// routes/api/color.js
 const express = require('express');
 const mysql = require('mysql2');
+
 const router = express.Router();
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '5475',
-  database: 'Muntz'
-  ,port:'3306'
-
+  database: 'Muntz',
+  port: '3306'
 });
 
 connection.connect((err) => {
@@ -21,18 +20,19 @@ connection.connect((err) => {
   }
 });
 
+// 제품의 컬러 정보를 조회하는 API
 router.get('/:product_id', (req, res) => {
   const productId = req.params.product_id;
 
-  connection.query('SELECT * FROM ProductDetails WHERE product_id = ?', [productId], (error, results) => {
+  connection.query('SELECT * FROM Color WHERE product_id = ?', [productId], (error, results) => {
     if (error) {
       res.status(500).json({ error });
     } else {
       if (results.length > 0) {
-        const productDetails = results[0];
-        res.json(productDetails);
+        const colorInfo = results.map(color => color.color);
+        res.json(colorInfo);
       } else {
-        res.status(404).json({ error: 'ProductDetails not found' });
+        res.status(404).json({ error: 'Color information not found' });
       }
     }
   });
