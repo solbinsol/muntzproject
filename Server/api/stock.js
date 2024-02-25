@@ -19,26 +19,21 @@ connection.connect((err) => {
   }
 });
 
-// 제품의 재고 정보를 조회하는 API
-router.get('/:product_id', (req, res) => {
-  const productId = req.params.product_id;
+// GET 요청에 대한 라우터
+router.get('/:product_id/:color', (req, res) => {
+  const { product_id, color } = req.params;
 
-  connection.query(
-    'SELECT Stock.stock_quantity_s, Stock.stock_quantity_m, Stock.stock_quantity_l FROM Stock JOIN ProductSize ON Stock.product_id = ProductSize.product_id WHERE Stock.product_id = ?',
-    [productId],
-    (error, results) => {
-      if (error) {
-        res.status(500).json({ error });
-      } else {
-        if (results.length > 0) {
-          const stockInfo = results[0];
-          res.json(stockInfo);
-        } else {
-          res.status(404).json({ error: 'Stock information not found' });
-        }
-      }
+  // MySQL 쿼리를 사용하여 product_id와 color_id에 기반한 재고 조회
+  const query = 'SELECT * FROM stockcheck WHERE product_id = ? AND color = ?';
+
+  connection.query(query, [product_id, color], (err, results) => {
+    if (err) {
+      console.error('재고 조회 오류:', err);
+      res.status(500).json({ error: '서버 오류' });
+    } else {
+      res.json(results);
     }
-  );
+  });
 });
 
 module.exports = router;

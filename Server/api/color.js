@@ -20,7 +20,6 @@ connection.connect((err) => {
   }
 });
 
-// 제품의 컬러 정보를 조회하는 API
 router.get('/:product_id', (req, res) => {
   const productId = req.params.product_id;
 
@@ -29,7 +28,10 @@ router.get('/:product_id', (req, res) => {
       res.status(500).json({ error });
     } else {
       if (results.length > 0) {
-        const colorInfo = results.map(color => color.color);
+        const colorInfo = results.map(color => ({
+          color_id: color.color_id,
+          color: color.color
+        }));
         res.json(colorInfo);
       } else {
         res.status(404).json({ error: 'Color information not found' });

@@ -22,12 +22,14 @@ export default function DetailPage() {
     const [colors, setColors] = useState([]);
     const [sizeOptions, setSizeOptions] = useState([]);
 
-    
+    const [selectedColor, setSelectedColor] = useState("블랙"); // 초기값은 빈 문자열로 설정
+
     useEffect(() => {
       // 좋아요와 바구니 상태 초기화
       if (product) {
         setIsInBasket(product.isInBasket === 1);
       }
+      
     }, [product]);
   
     useEffect(() => {
@@ -57,16 +59,23 @@ export default function DetailPage() {
           const sizeResponse = await axios.get(`http://localhost:5000/api/size/${category_id}/${product_id}`);
           console.log('Size API Response:', sizeResponse.data);
 
-          // 제품의 재고 정보를 가져오는 API
-          const stockResponse = await axios.get(`http://localhost:5000/api/stock/${product_id}`);
-          console.log('Stock API Response:', stockResponse.data);
-  
-          setStockData(stockResponse.data); // 재고 정보 상태 업데이트
+
   
           const colorResponse = await axios.get(`http://localhost:5000/api/color/${product_id}`);
           setColors(colorResponse.data);
 
+          const defaultColor = colorResponse.data.length > 0 ? colorResponse.data[0].color : "";
+          setSelectedColor(defaultColor);
+          console.log(selectedColor);
           
+
+                    // 제품의 재고 정보를 가져오는 API
+                    const stockResponse = await axios.get(`http://localhost:5000/api/stock/${product_id}/${selectedColor}`);
+                    console.log('Stock API Response:', stockResponse.data);
+            
+                    setStockData(stockResponse.data); // 재고 정보 상태 업데이트
+
+
           // 로그인한 경우에만 좋아요 및 바구니 상태를 가져옴
           let userLikeResponse = null;
           let userBasResponse = null;
@@ -116,6 +125,7 @@ export default function DetailPage() {
       fetchProduct();
     }, [router.query.product_id]);
   
+    
     const toggleLike = async () => {
       try {
         // 로그인하지 않은 경우 토글하지 않고 로그인 페이지로 이동하도록 처리
@@ -182,6 +192,7 @@ export default function DetailPage() {
       }
     };
   
+    
     return (
       <div>
         <div className={style.DetailPage}>
@@ -231,12 +242,15 @@ export default function DetailPage() {
                       <li>배송비 : </li>
                     </div>
                     <div className={style.Selecter}>
+                    <select onChange={(e) => setSelectedColor(e.target.value)} value={selectedColor}>
+  {colors.map((color, index) => (
+    <option key={index} value={color.color}>
+      {color.color}
+    </option>
+  ))}
+</select>
 
-                        <select>
-                        {colors.map((color, index) => (
-                          <option key={index}>{color}</option>
-                        ))}
-                        </select>
+
                                                 <select>
                           <option>사이즈종류</option>
                         </select>
