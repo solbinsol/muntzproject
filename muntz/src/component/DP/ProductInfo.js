@@ -22,7 +22,7 @@ export default function DetailPage() {
     const [colors, setColors] = useState([]);
     const [sizeOptions, setSizeOptions] = useState([]);
 
-    const [selectedColor, setSelectedColor] = useState("블랙"); // 초기값은 빈 문자열로 설정
+  const [selectedColor, setSelectedColor] = useState("");
 
     useEffect(() => {
       // 좋아요와 바구니 상태 초기화
@@ -48,32 +48,35 @@ export default function DetailPage() {
           }
   
           // 기존의 상품 정보를 가져오는 API
-          const productResponse = await axios.get(`http://localhost:5000/api/product/${product_id}`);
+          const productResponse = await axios.get(`http://115.23.171.88:5000/api/product/${product_id}`);
   
           // 새로 추가한 ProductDetails 정보를 가져오는 API
-          const productDetailsResponse = await axios.get(`http://localhost:5000/api/detail/${product_id}`);
+          const productDetailsResponse = await axios.get(`http://115.23.171.88:5000/api/detail/${product_id}`);
   
           const category_id = productResponse.data.category_id;
 
           // 제품의 사이즈 정보를 가져오는 API
-          const sizeResponse = await axios.get(`http://localhost:5000/api/size/${category_id}/${product_id}`);
+          const sizeResponse = await axios.get(`http://115.23.171.88:5000/api/size/${category_id}/${product_id}`);
           console.log('Size API Response:', sizeResponse.data);
 
 
   
-          const colorResponse = await axios.get(`http://localhost:5000/api/color/${product_id}`);
+          const colorResponse = await axios.get(`http://115.23.171.88:5000/api/color/${product_id}`);
           setColors(colorResponse.data);
 
-          const defaultColor = colorResponse.data.length > 0 ? colorResponse.data[0].color : "";
-          setSelectedColor(defaultColor);
-          console.log(selectedColor);
+          const selectedColorToFetch = selectedColor || (colorResponse.data.length > 0 ? colorResponse.data[0].color : "");
+          setSelectedColor(selectedColorToFetch);
+
+          console.log(selectedColorToFetch);
           
 
                     // 제품의 재고 정보를 가져오는 API
-                    const stockResponse = await axios.get(`http://localhost:5000/api/stock/${product_id}/${selectedColor}`);
+                    const stockResponse = await axios.get(`http://115.23.171.88:5000/api/stock/${product_id}/${selectedColorToFetch}`);
                     console.log('Stock API Response:', stockResponse.data);
             
-                    setStockData(stockResponse.data); // 재고 정보 상태 업데이트
+                    const stockDataWithoutIdAndColor = stockResponse.data.map(({ product_id, color, ...rest }) => rest);
+
+                    setStockData(stockDataWithoutIdAndColor); // 재고 정보 상태 업데이트
 
 
           // 로그인한 경우에만 좋아요 및 바구니 상태를 가져옴
@@ -81,7 +84,7 @@ export default function DetailPage() {
           let userBasResponse = null;
   
           if (storedUser) {
-            userLikeResponse = await axios.post('http://localhost:5000/api/user_likes/get-like', {
+            userLikeResponse = await axios.post('http://115.23.171.88:5000/api/user_likes/get-like', {
               user_id: storedUser.user_id,
               product_id,
             });
@@ -90,7 +93,7 @@ export default function DetailPage() {
                 
             if (!userLikeResponse.data) {
                 // 레코드가 없으면 새로운 레코드 추가
-                await axios.post('http://localhost:5000/api/user_likes/insert-like', {
+                await axios.post('http://115.23.171.88:5000/api/user_likes/insert-like', {
                   user_id: storedUser.user_id,
                   product_id,
                   liked: 0, // 초기값
@@ -98,7 +101,7 @@ export default function DetailPage() {
                 });
                 console.log("asdasdasdasdasdas");
               }
-            userBasResponse = await axios.post('http://localhost:5000/api/user_likes/get-basket', {
+            userBasResponse = await axios.post('http://115.23.171.88:5000/api/user_likes/get-basket', {
               user_id: storedUser.user_id,
               product_id,
             });
@@ -116,14 +119,14 @@ export default function DetailPage() {
           };
           setProduct(productWithDetailsAndSize);
   
-          await axios.post('http://localhost:5000/api/increase-view-count', { product_id });
+          await axios.post('http://115.23.171.88:5000/api/increase-view-count', { product_id });
         } catch (error) {
           console.error('API 호출 오류dd:', error);
         }
       };
   
       fetchProduct();
-    }, [router.query.product_id]);
+    }, [router.query.product_id,selectedColor]);
   
     
     const toggleLike = async () => {
@@ -135,7 +138,7 @@ export default function DetailPage() {
         }
   
         // 서버에 토글된 정보를 전송
-        const response = await axios.post('http://localhost:5000/api/user_likes/toggle-like', {
+        const response = await axios.post('http://115.23.171.88:5000/api/user_likes/toggle-like', {
           user_id: currentUserID,
           product_id: currentProductID,
         });
@@ -165,7 +168,7 @@ export default function DetailPage() {
           return;
         }
   
-        const response = await axios.post('http://localhost:5000/http://172.30.1.71:5000/api/user_likes/toggle-basket', {
+        const response = await axios.post('http://115.23.171.88:5000/http://172.30.1.71:5000/api/user_likes/toggle-basket', {
           user_id: currentUserID,
           product_id: currentProductID,
         });
@@ -249,11 +252,17 @@ export default function DetailPage() {
     </option>
   ))}
 </select>
-
-
-                                                <select>
-                          <option>사이즈종류</option>
-                        </select>
+<select>
+                  <option>사이즈종류</option>
+                  {stockData.length > 0 &&
+                    Object.keys(stockData[0]) // 첫 번째 재고 정보를 기준으로 컬럼명 가져옴
+                      .filter((size) => stockData[0][size] !== null) // 값이 있는 컬럼만 필터링
+                      .map((size) => (
+                        <option key={size} value={size}>
+                          {stockData[0][size] === 0 ? `${size} (품절)` : size}
+                        </option>
+                      ))}
+                </select>
                     </div>
                     <div className={style.SizeTable}>
                       <p className={style.TableT}>* 측정 방식에 따라 약간의 차이가 있을 수 있습니다. </p>

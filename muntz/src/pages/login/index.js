@@ -22,7 +22,7 @@ export default function Login() {
     
       const handleLogin = async () => {
         try {
-          const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+          const response = await axios.post('http://115.23.171.88:5000/api/auth/login', formData);
           console.log(response.data);
     
           // 로그인이 성공하면 추가적인 로직을 수행하면 됩니다.
