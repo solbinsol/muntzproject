@@ -58,7 +58,7 @@ useEffect(() => {
 }, [router.query.product_id]);
 
   return (
-    <div>
+    <div className={style.DP}>
       <Header />
       <div className={style.DetailPage}>
         <ProductInfo></ProductInfo>

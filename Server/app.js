@@ -38,7 +38,7 @@ app.use('/api/AddProduct', AddProductRouter);
 app.use('/api/color', colorRouter);
 
 app.get('/', (req, res) => {
-  res.send('Hello, World!'); // 또는 클라이언트에게 전송할 다른 콘텐츠
+  res.send('Hello, Worldtestdd!'); // 또는 클라이언트에게 전송할 다른 콘텐츠
 });
 
 

@@ -1,3 +1,71 @@
+@media screen and (max-width:999px) and (min-width:601px)
+ {
+    .DetailBox{
+        width: 600px !important;
+        margin: 0 auto;
+        margin-top: 50px;
+        height: 600px;
+    }
+    .DetailBox table{
+        font-size: 18px;
+    }
+    .ImgBox{
+        width: 600px !important;
+        height: 650px !important;
+
+        margin: 0 auto !important;
+    }
+    .DetailText{
+        width: 600px !important;
+        margin-left: 0 !important;
+    }
+    .Selecter{
+        width:600px !important;
+    }
+    .BtnBox{
+        margin-bottom: 40px;
+    }
+    .BtnBox button{
+        font-size: 20px;
+        height: 70px !important;
+    }
+}
+
+
+@media screen and (max-width:600px)
+ {
+    .DetailBox{
+        width: 360px !important;
+        margin: 0 auto;
+        margin-top: 50px;
+        height: 600px;
+    }
+    .DetailBox table{
+        font-size: 14px;
+    }
+    .ImgBox{
+        width: 360px !important;
+        height: 410px !important;
+
+        margin: 0 auto !important;
+    }
+    .DetailText{
+        width: 360px !important;
+        margin-left: 0 !important;
+    }
+    .Selecter{
+        width:360px !important;
+    }
+    .BtnBox{
+        margin-bottom: 40px;
+    }
+    .BtnBox button{
+        font-size: 18px;
+        height: 60px !important;
+    }
+}
+
+
 .DetailPage{
     width: 100%;
 }
