@@ -5,6 +5,9 @@ import Footer from "@/component/Footer";
 import Header from "@/component/Header";
 import axios from "axios";
 import ProductInfo from "@/component/DP/ProductInfo";
+import Review from "@/component/DP/Review";
+
+
 export default function DetailPage() {
     const [selectedTab, setSelectedTab] = useState('description');
 
@@ -62,6 +65,7 @@ useEffect(() => {
       <Header />
       <div className={style.DetailPage}>
         <ProductInfo></ProductInfo>
+        <Review></Review>
       </div>
       <Footer />
     </div>

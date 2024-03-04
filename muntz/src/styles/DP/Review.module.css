@@ -1,0 +1,60 @@
+@media screen and (max-width:999px) and (min-width:601px)
+{
+    .ReviewBox{
+        width: 600px !important;
+        margin: 0 auto;
+    }
+    .ReviewNav{
+        width: 600px !important;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width:600px)
+{
+    .ReviewNav{
+        width: 360px !important;
+        margin: 0 auto;
+    }
+    .ReviewBox{
+        width: 360px !important;
+        margin: 0 auto;
+    }
+    .ReviewBox h3{
+        font-size: 14px;
+        width: 20%;
+        float: left;
+    }
+
+}
+.Review{
+    float: left;
+    width: 100%;
+}
+.ReviewNav{
+    width: 1000px;
+    margin: 0 auto;
+}
+.ReviewNav ul{
+    width: 100%;
+    float: left;
+    margin-bottom: 5px;
+}
+.ReviewNav li{
+    margin-right: 20px;
+    float: left;
+}
+.Review h3{
+    font-family: 'Pretendard-Regular' ;
+    float: left;
+    width: 18%;
+}
+.ReviewBox{
+    width: 1000px;
+    margin: 0 auto;
+}
+.ReviewBox span{
+    float: left;
+    font-size: 14px;
+    line-height: 24px;
+    color: gray;
+}
