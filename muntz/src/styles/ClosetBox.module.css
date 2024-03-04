@@ -16,14 +16,14 @@
 
 .ClosetImgBox{
     width: 100%;
-    height: 490px;
-    background-color: beige;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.11);
+    
 
 }
 .ClosetBox li img {
     /* width: 335px;
     height: 365px ; */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.11);
+
     width: 100%;
     height: 100%;
     margin: 0;
@@ -34,7 +34,7 @@
     margin-bottom: 30px;
     width: 24%;
     float: left;
-    margin-left: 12px;
+    margin-left: 1%;
     margin-right: 0px;
     
 }

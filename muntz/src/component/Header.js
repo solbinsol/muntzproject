@@ -44,7 +44,7 @@ export default function Header() {
           {loggedIn ? (
             <>
               <li className={style.SU} onClick={handleLogout}> Logout</li>
-              <li className={style.UN}>{userName} </li>
+              <Link href="/mypage"><li className={style.UN}>{userName} </li></Link>
             </>
           ) : (
             <>
