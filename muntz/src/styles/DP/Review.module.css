@@ -40,6 +40,7 @@
     margin-bottom: 5px;
 }
 .ReviewNav li{
+    cursor: pointer;
     margin-right: 20px;
     float: left;
 }

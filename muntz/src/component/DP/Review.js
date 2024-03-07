@@ -1,6 +1,7 @@
 import React from "react"
 import style from "@/styles/DP/Review.module.css"
 import StyleReview from "./ReivewItem/StyleReview"
+import BasicReview from "./ReivewItem/BasicReivew"
 
 export default function Review(){
 
@@ -15,6 +16,7 @@ export default function Review(){
             </div>
             <div className={style.ReviewBox}>
                 <StyleReview></StyleReview>
+                <BasicReview></BasicReview>
             </div>
         </div>
     )

@@ -11,7 +11,15 @@ export default function Review(){
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
-
+        responsive: [
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 3,
+              centerMode: false,
+            },
+          },
+        ],
       };
     
     return(

@@ -1,0 +1,121 @@
+@media screen and (max-width:999px) and (min-width:601px)
+{
+    .ReviewBox{
+        width: 30.3% !important;
+        height: 105px !important;
+
+    }
+    .ReviewBox img{
+        margin-top: 5px;
+        width: 60px !important;
+        height: 80px !important;
+    }
+    .ProductName{
+        margin-top: 5px;
+        font-size: 12px;
+    }
+    .ReviewBox .NickName{
+        font-weight: bold;
+        font-size: 14px !important;
+    }
+    .Date{
+        font-size: 12px !important;
+        line-height: 16px !important;
+    }
+    .Coment{
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (max-width:600px){
+    .ReviewBox{
+        width: 100% !important;
+        height: 100px !important;
+        padding: 0 !important;
+        margin-bottom: 10px !important;
+        position: relative;
+    }
+    .NickName{
+        position: absolute;
+        top: 8px;
+        left: 70px;
+        width: 30% !important;
+    }
+    .Date{
+        position: absolute;
+        right: 0;
+    }
+    .ReviewBox img{
+        padding-top: 6px !important;
+        position: relative;
+        left: 0;
+        width: 50px !important;
+        height: 60px !important;
+        float: left !important;
+    }
+    .ProductName{
+        width: 100% !important;
+        position: absolute;
+        top: 30px;
+        left: 70px;
+    }
+    .size{
+        position: absolute !important;
+        top: 46px !important;
+        left: 75px;
+    }
+    .Coment{
+        position: absolute;
+        top:70px
+    }
+}
+.BasicReview{
+    float: left;
+    width: 100%;
+}
+.BasicReview .NickName{
+    width: 48%;
+    float: left;
+    margin-left: 2%;
+}
+.Date{
+    width: 48%;
+    text-align: right;
+    margin-right: 2%;
+}
+.ReviewBox{
+    width: calc(32.5% - 10px);
+    float: left;
+    margin-right: 8px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;    
+    padding: 5px;
+    height: 125px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+
+}
+.ReviewBox img{
+    width: 80px;
+    height: 100px;
+    float: left;
+    margin-left: 2%;
+}
+.ReviewBox p{
+    font-family: 'Pretendard-Regular' !important;
+    float: left;
+}
+.ProductName{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+
+.Size{
+    text-align: right;
+}
+
+.Coment{
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 14px;
+}
