@@ -1,19 +1,14 @@
 @media screen and (max-width:999px) and (min-width:601px)
 {
-    .BR{
-        height: auto !important;
-        margin-bottom: 30px;
-    }
     .ReviewBox{
-        height: 85px !important;
-        width: 190px !important;
-        margin-left: 7.5px !important;
-        float: left !important;
+        height: 75px !important;
+
     }
     .ReviewBox img{
         margin-top: 5px;
-        width: 40px !important;
-        height: 50px !important;
+        width: 30px !important;
+        display: none;
+        height: 40px !important;
     }
     .NickName{
         margin-left: 5% !important;
@@ -24,7 +19,10 @@
         margin-top: 5px;
         font-size: 12px;
     }
-
+    .ReviewBox{
+        width:100% !important;
+        margin-right: 100px !important
+    }
     .ReviewBox .NickName{
         font-weight: bold;
         font-size: 14px !important;
@@ -36,15 +34,10 @@
     }
     .Coment{
         font-size: 12px !important;
-        margin-left: 10px !important;
     }
 }
 
 @media screen and (max-width:600px){
-    .BR{
-        height: auto !important;
-        margin-bottom: 30px;
-    }
     .ReviewBox{
         width: 100% !important;
         height: 100px !important;
@@ -54,10 +47,9 @@
     }
     .NickName{
         position: absolute;
-        top: 11px;
-        left: 50px;
+        top: 8px;
+        left: 70px;
         width: 30% !important;
-        font-size: 12px !important;
     }
     .Date{
         position: absolute;
@@ -66,55 +58,41 @@
     .ReviewBox img{
         padding-top: 6px !important;
         position: relative;
-        left: 5px;
+        left: 0;
         width: 50px !important;
         height: 60px !important;
         float: left !important;
-        margin-left: 0 !important;
-        top: 0 !important;
-        margin-top: 0 !important;
     }
     .ProductName{
         width: 100% !important;
         position: absolute;
         top: 30px;
-        left: 57px;
-        font-size: 12px !important;
+        left: 70px;
     }
     .size{
         position: absolute !important;
         top: 46px !important;
-        left: 64px;
-        font-size: 12px !important;
+        left: 75px;
     }
     .Coment{
         position: absolute;
-        top:70px;
-        font-size:12px !important;
-        left: 0px !important;
-        bottom: 30px;
-        margin-top: 2.5px !important;
-    }
-    .Date{
-        font-size: 10px !important;
+        top:70px
     }
 }
 .BR{
     width: 100%;
     float: left ;
-    height: auto !important;
-
+    height: 300px;
 }
 
 .BasicReview{
+    
     width: 100%;
     float: left;
 }
 .BasicReview .NickName{
     width: 46%;
     float: left;
-    font-weight: bold;
-
     margin-left: 4%;
 }
 .Date{
@@ -122,7 +100,14 @@
     text-align: right;
     margin-right: 4% !important;
 }
-
+.ReviewBox{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;    
+    padding: 5px !important;
+    height: 125px ;
+    margin-top: 10px ;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
 .ReviewBox img{
     width: 80px;
     height: 100px;
@@ -150,16 +135,8 @@
     width: 55%;
     float: left;
 }
-.ReviewBox {
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;    
-    padding: 5px !important;
-    height: 145px;
+.Slider{
     float: left;
-    margin-top: 10px;
-    padding-bottom: 15px;
-    margin-bottom: 30px;
-    margin-left: 10px;
-    box-sizing: border-box;
-    width: 320px;
-    
+    width: 100%;
+    height: 160px !important;
 }

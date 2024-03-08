@@ -52,6 +52,16 @@ export default function Review(){
                     <img src="https://ifh.cc/g/wvsotz.jpg"/>
                     <p className={style.ReivewText}>이 옷은 솰라솰라</p>
                 </div>
+                <div className={style.ReivewItem}>
+                    <h3>u.name닉넴6</h3><span>date 00/00/00</span>
+                    <img src="https://ifh.cc/g/wvsotz.jpg"/>
+                    <p className={style.ReivewText}>이 옷은 솰라솰라</p>
+                </div>
+                <div className={style.ReivewItem}>
+                    <h3>u.name닉넴7</h3><span>date 00/00/00</span>
+                    <img src="https://ifh.cc/g/wvsotz.jpg"/>
+                    <p className={style.ReivewText}>이 옷은 솰라솰라</p>
+                </div>
             </Slider>
 
             </div>
