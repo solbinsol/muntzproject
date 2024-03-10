@@ -6,18 +6,22 @@
     }
     .ReviewBox{
         height: 85px !important;
-        width: 190px !important;
-        margin-left: 7.5px !important;
+        width: 290px !important;
+        margin-right: 10px !important;
         float: left !important;
+        margin-left: 0 !important;
+        margin-bottom: 5px !important;
     }
     .ReviewBox img{
         margin-top: 5px;
+        margin-left: 0 !important;
         width: 40px !important;
         height: 50px !important;
+        float: left !important;
     }
     .NickName{
-        margin-left: 5% !important;
-
+        margin-left: 0% !important;
+        font-size: 14px !important;
     }
     .ProductName{
         margin-left: 5% !important;
@@ -28,11 +32,16 @@
     .ReviewBox .NickName{
         font-weight: bold;
         font-size: 14px !important;
+        width: 50% !important;
+        height: 15px !important;
     }
     .Date{
         font-size: 12px !important;
         width: 40% !important;
         line-height: 16px !important;
+        margin: 0 !important;
+        float: right !important; 
+        
     }
     .Coment{
         font-size: 12px !important;
@@ -120,7 +129,7 @@
 .Date{
     width: 46%;
     text-align: right;
-    margin-right: 4% !important;
+    margin-right: 4% ;
 }
 
 .ReviewBox img{

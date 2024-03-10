@@ -1,0 +1,19 @@
+.ProductList{
+    width: 100%;
+    float: left;
+    height: 372px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.ProductList::-webkit-scrollbar{   
+    display: none;
+}
+.ProductList td{
+    font-family: 'Pretendard-Regular' !important;
+
+}
+.ProductList tbody tr:hover td {
+    background-color: pink;
+  }
+  

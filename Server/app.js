@@ -8,6 +8,8 @@ const authRouter = require('./api/auth');
 const likesRouter = require('./api/user_likes'); 
 const AddProductRouter = require('./api/AddProduct'); 
 const colorRouter = require('./api/color');
+const stockcheckRouter = require('./api/stockcheck');
+const deleteRouter = require('./api/product_delete');
 
 const bodyParser = require('body-parser');
 
@@ -26,16 +28,17 @@ const morgan = require('morgan');
 app.use(morgan('dev')); // 개발환경에서 간단한 로그 출력
 
 // 115.23.171.88
-
 app.use(cors());
 app.use('/api', productsRouter);
 app.use('/api/detail', detailRouter); // 추가
+app.use('/api/product_delete', deleteRouter); // 삭제
 app.use('/api/size', sizeRouter);
 app.use('/api/stock', stockRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/user_likes', likesRouter);
 app.use('/api/AddProduct', AddProductRouter);
 app.use('/api/color', colorRouter);
+app.use('/api/stockcheck', stockcheckRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello, Worldtestdd!'); // 또는 클라이언트에게 전송할 다른 콘텐츠
