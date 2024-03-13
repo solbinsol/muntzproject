@@ -9,6 +9,8 @@ import Header from '@/component/Header'
 import NewProduct from '@/component/MP/NewProduct'
 import BestItem from '@/component/MP/BestItem'
 import AllProduct from '@/component/MP/AllProduct'
+import MainSnap from '@/component/MP/MainSnap'
+import MainFooter from '@/component/MP/MainFooter'
 
 export default function Home() {
   return (
@@ -18,7 +20,9 @@ export default function Home() {
           <img src='image/testMain2.jpg'/>
         </div>
       <div className={style.MainContent}>
-
+        <div className={style.MainSnap}>
+          <MainSnap></MainSnap>          
+        </div>
         <div className={style.BestItem}>
           <BestItem></BestItem>          
         </div>
@@ -29,6 +33,7 @@ export default function Home() {
           <AllProduct></AllProduct>
         </div>
         <div className={style.FooterBox}>
+          <MainFooter></MainFooter>
         </div>
       </div>
       <Footer></Footer>
