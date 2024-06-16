@@ -1,0 +1,153 @@
+@media screen and (max-width:600px) and (min-width:481px)
+{
+    .MFbox{
+        width: 60% !important;
+        background-color: blue;
+    }
+    .SosialList{
+        width: 60% !important;
+    }
+    .SosialList li{
+        background-color: red;
+        height: 25px !important;
+    }
+    .SosialList li img{
+        width: 25px !important;
+        height: 25px !important;
+    }
+    .SosialList p {
+        font-size: 10px !important;
+        line-height: 25px !important;
+    }
+    .IMGBox{
+        float: left;
+         width: 40% !important;
+    }
+    .IMGBox img{
+            object-fit: cover !important;
+            width:100%;
+    }
+    .SosialList ul{
+        margin-top: 0 !important;
+    }
+}
+@media screen and (max-width:480px) and (min-width:401px){
+    .MFbox{
+        width: 60% !important;
+        background-color: blue;
+    }
+    .SosialList{
+        width: 60% !important;
+    }
+    .SosialList li{
+        background-color: red;
+        height: 20px !important;
+    }
+    .SosialList li img{
+        width: 20px !important;
+        height: 20px !important;
+    }
+    .SosialList p {
+        font-size: 10px !important;
+        line-height: 20px !important;
+    }
+    .IMGBox{
+        float: left;
+         width: 40% !important;
+    }
+    .IMGBox img{
+            object-fit: cover !important;
+            width:100%;
+    }
+    .SosialList ul{
+        margin-top: 0 !important;
+    }
+}
+@media screen and (max-width:400px) {
+    .MFbox{
+        width: 50% !important;
+    }
+    .SosialList{
+        width: 100% !important;
+    }
+    .SosialList li{
+        height: 20px !important;
+    }
+    .SosialList li img{
+        width: 20px !important;
+        height: 20px !important;
+    }
+    .SosialList p {
+        font-size: 10px !important;
+        line-height: 20px !important;
+    }
+    .IMGBox{
+        display: none;
+        float: left;
+         width: 40% !important;
+    }
+    .IMGBox img{
+            object-fit: cover !important;
+            width:100%;
+    }
+    .SosialList ul{
+        margin-top: 0 !important;
+    }
+}
+
+.MainFooter{
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+}
+.MFbox{
+    float: right;
+    width: 40%;
+}
+.SosialList{
+
+    width: 45%;
+    float: left;
+
+}
+.SosialList ul{
+    margin-top: 50px;
+}
+
+.SosialList li{
+    
+    height: 50px;
+}
+.SosialList li img{
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+
+.SosialList p {
+    font-weight: bold;
+    line-height: 50px;
+    margin-left:8%;
+    font-size: 14px;
+    font-family: 'Pretendard-Regular' !important;
+
+}
+#ADP{
+    line-height: 35px;
+}
+#ADP2{
+    line-height:2.5px;
+}
+
+
+.IMGBox{
+    float: left;
+    width: 45%;
+
+}
+.IMGBox img{
+    
+    width:100%;
+    float: right;
+}

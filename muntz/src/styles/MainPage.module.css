@@ -22,3 +22,7 @@
     margin: 0 auto;
     width: 80%;
 }
+.MainSnap{
+    float: left;
+    width: 100%;
+}
