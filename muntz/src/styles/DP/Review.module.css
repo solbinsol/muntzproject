@@ -59,3 +59,10 @@
     line-height: 24px;
     color: gray;
 }
+
+.ReviewNav ul li.active {
+    font-weight: bold;
+    color: gray/* 활성화된 탭의 색상 */;
+    
+    border-bottom: 1px solid gray;
+}

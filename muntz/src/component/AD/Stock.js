@@ -18,7 +18,7 @@ export default function ProductAdd() {
     // selectedProductId가 변경될 때마다 실행되는 useEffect
     if (selectedProductId) {
       // 선택된 상품의 color 정보를 가져오기
-      axios.get(`http://115.23.171.88:5000/api/color/${selectedProductId}`)
+      axios.get(`http://localhost:5000/api/color/${selectedProductId}`)
         .then(response => {
           // 가져온 color 정보를 이용해 옵션 생성
           const colors = response.data.map(color => color.color);
@@ -54,7 +54,7 @@ export default function ProductAdd() {
 
   const handleStockRegistration = () => {
     // 클라이언트에서 서버로 재고 정보를 전송
-    axios.post('http://115.23.171.88:5000/api/stockcheck/update-stock', {
+    axios.post('http://localhost:5000/api/stockcheck/update-stock', {
       product_id: selectedProductId,
       color: selectedColor, // 선택한 컬러 값 추가
       ...stockQuantities,

@@ -11,7 +11,7 @@ const ProductList = ({ onProductClick, onDelete }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://115.23.171.88:5000/api/products");
+      const response = await axios.get("http://localhost:5000/api/products");
       setProducts(response.data);
     } catch (error) {
       console.error("API 호출 오류:", error);

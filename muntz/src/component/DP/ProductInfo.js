@@ -48,20 +48,20 @@ export default function DetailPage() {
           }
   
           // 기존의 상품 정보를 가져오는 API
-          const productResponse = await axios.get(`http://115.23.171.88:5000/api/product/${product_id}`);
+          const productResponse = await axios.get(`http://localhost:5000/api/product/${product_id}`);
   
           // 새로 추가한 ProductDetails 정보를 가져오는 API
-          const productDetailsResponse = await axios.get(`http://115.23.171.88:5000/api/detail/${product_id}`);
+          const productDetailsResponse = await axios.get(`http://localhost:5000/api/detail/${product_id}`);
   
           const category_id = productResponse.data.category_id;
 
           // 제품의 사이즈 정보를 가져오는 API
-          const sizeResponse = await axios.get(`http://115.23.171.88:5000/api/size/${category_id}/${product_id}`);
+          const sizeResponse = await axios.get(`http://localhost:5000/api/size/${category_id}/${product_id}`);
           console.log('Size API Response:', sizeResponse.data);
 
 
   
-          const colorResponse = await axios.get(`http://115.23.171.88:5000/api/color/${product_id}`);
+          const colorResponse = await axios.get(`http://localhost:5000/api/color/${product_id}`);
           setColors(colorResponse.data);
 
           const selectedColorToFetch = selectedColor || (colorResponse.data.length > 0 ? colorResponse.data[0].color : "");
@@ -71,7 +71,7 @@ export default function DetailPage() {
           
 
                     // 제품의 재고 정보를 가져오는 API
-                    const stockResponse = await axios.get(`http://115.23.171.88:5000/api/stock/${product_id}/${selectedColorToFetch}`);
+                    const stockResponse = await axios.get(`http://localhost:5000/api/stock/${product_id}/${selectedColorToFetch}`);
                     console.log('Stock API Response:', stockResponse.data);
             
                     const stockDataWithoutIdAndColor = stockResponse.data.map(({ product_id, color, ...rest }) => rest);
@@ -84,7 +84,7 @@ export default function DetailPage() {
           let userBasResponse = null;
   
           if (storedUser) {
-            userLikeResponse = await axios.post('http://115.23.171.88:5000/api/user_likes/get-like', {
+            userLikeResponse = await axios.post('http://localhost:5000/api/user_likes/get-like', {
               user_id: storedUser.user_id,
               product_id,
             });
@@ -93,7 +93,7 @@ export default function DetailPage() {
                 
             if (!userLikeResponse.data) {
                 // 레코드가 없으면 새로운 레코드 추가
-                await axios.post('http://115.23.171.88:5000/api/user_likes/insert-like', {
+                await axios.post('http://localhost:5000/api/user_likes/insert-like', {
                   user_id: storedUser.user_id,
                   product_id,
                   liked: 0, // 초기값
@@ -101,7 +101,7 @@ export default function DetailPage() {
                 });
                 console.log("asdasdasdasdasdas");
               }
-            userBasResponse = await axios.post('http://115.23.171.88:5000/api/user_likes/get-basket', {
+            userBasResponse = await axios.post('http://localhost:5000/api/user_likes/get-basket', {
               user_id: storedUser.user_id,
               product_id,
             });
@@ -119,7 +119,7 @@ export default function DetailPage() {
           };
           setProduct(productWithDetailsAndSize);
   
-          await axios.post('http://115.23.171.88:5000/api/increase-view-count', { product_id });
+          await axios.post('http://localhost:5000/api/increase-view-count', { product_id });
         } catch (error) {
           console.error('API 호출 오류dd:', error);
         }
@@ -138,7 +138,7 @@ export default function DetailPage() {
         }
   
         // 서버에 토글된 정보를 전송
-        const response = await axios.post('http://115.23.171.88:5000/api/user_likes/toggle-like', {
+        const response = await axios.post('http://localhost:5000/api/user_likes/toggle-like', {
           user_id: currentUserID,
           product_id: currentProductID,
         });
@@ -168,7 +168,7 @@ export default function DetailPage() {
           return;
         }
   
-        const response = await axios.post('http://115.23.171.88:5000/http://172.30.1.71:5000/api/user_likes/toggle-basket', {
+        const response = await axios.post('http://localhost:5000/http://172.30.1.71:5000/api/user_likes/toggle-basket', {
           user_id: currentUserID,
           product_id: currentProductID,
         });

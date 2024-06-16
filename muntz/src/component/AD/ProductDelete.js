@@ -15,7 +15,7 @@ export default function ProductAdd() {
 
   const handleProductDelete = async () => {
     try {
-      await axios.delete(`http://115.23.171.88:5000/api/product_delete/${selectedProductId}`);
+      await axios.delete(`http://localhost:5000/api/product_delete/${selectedProductId}`);
       setSelectedProductId(null);
       setSelectedProductName(null);
       
@@ -38,8 +38,8 @@ export default function ProductAdd() {
       </div>
       <div className={style.Addbox}>
         <form>
-          <p>선택 된 제품 ID: {selectedProductId}</p>
-          <p>선택 된 제품 Name: {selectedProductName}</p>
+          <p className={style.SelectID}>선택 된 제품 ID: {selectedProductId}</p>
+          <p className={style.SelectName}>선택 된 제품 Name: {selectedProductName}</p>
           <button type="button" className={style.Abtn} onClick={handleProductDelete}>
             제품 삭제
           </button>

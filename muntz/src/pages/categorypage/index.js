@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/router';  // useRouter 추가
+import { useRouter } from 'next/router';
 import style from "../../styles/Category.module.css";
 import Footer from "@/component/Footer";
 import Header from "@/component/Header";
@@ -9,31 +9,37 @@ import axios from "axios";
 export default function CategoryPage() {
   const [products, setProducts] = useState([]);
   const [cName, setCName] = useState("");
-  const [sortBy, setSortBy] = useState("latest"); // 최신순을 기본값으로 설정
-  const router = useRouter();  // useRouter를 이용하여 router 객체 생성
+  const [sortBy, setSortBy] = useState("latest");
+  const router = useRouter();
 
   useEffect(() => {
-    const { categoryNo } = router.query;
-    if(categoryNo === "1"){
-        setCName("OUTER")
-    }else if(categoryNo === "2"){
-        setCName("TOP")
-    }else if(categoryNo === "3"){
-        setCName("BOTTOM")
-    }else if(categoryNo === "4"){
-        setCName("ACC")
-    }
     const fetchData = async () => {
       try {
-        console.log('Category number:', categoryNo);  // 추가
+        const { categoryNo } = router.query;
+
         if (!categoryNo) {
           console.error('Category number is not provided.');
           return;
         }
-  
-        // API 호출 시에 정렬 방식도 함께 전달
-        const response = await axios.get(`http://115.23.171.88:5000/api/category?categoryNo=${categoryNo}&sortBy=${sortBy}`);
-        console.log('API Response:', response.data);  // 추가
+
+        let categoryName = "";
+        if (categoryNo === "1") {
+          categoryName = "OUTER";
+        } else if (categoryNo === "2") {
+          categoryName = "TOP";
+        } else if (categoryNo === "3") {
+          categoryName = "BOTTOM";
+        } else if (categoryNo === "4") {
+          categoryName = "ACC";
+        }
+        setCName(categoryName);
+
+        console.log('Fetching data for category:', categoryNo, 'with sort:', sortBy);
+        const response = await axios.get(`http://localhost:5000/api/category`, {
+          params: { categoryNo, sortBy }
+        });
+
+        console.log('API Response:', response.data);
         setProducts(response.data);
       } catch (error) {
         console.error('API 호출 오류:', error);
@@ -41,7 +47,7 @@ export default function CategoryPage() {
     };
 
     fetchData();
-  }, [router.query.categoryNo, sortBy]); // sortBy가 변경될 때마다 다시 호출되도록 변경
+  }, [router.query.categoryNo, sortBy]);
 
   const handleSortChange = (event) => {
     setSortBy(event.target.value);
@@ -49,22 +55,22 @@ export default function CategoryPage() {
 
   return (
     <div>
-        <Header />
+      <Header />
 
-        <div className={style.CategoryPage}>
+      <div className={style.CategoryPage}>
         <div className={style.CategoryContent}>
-            <div className={style.Cheader}>
-                <h1 className={style.Category}>{cName}</h1>
-                <select value={sortBy} onChange={handleSortChange}>
-                    <option value="latest">최신순</option>
-                    <option value="popularity">인기순</option>
-                    <option value="views">조회순</option>
-                </select>
-            </div>
+          <div className={style.Cheader}>
+            <h1 className={style.Category}>{cName}</h1>
+            <select value={sortBy} onChange={handleSortChange}>
+              <option value="latest">최신순</option>
+              <option value="popularity">인기순</option>
+              <option value="views">조회순</option>
+            </select>
+          </div>
 
-            <ClosetBox products={products} />
+          <ClosetBox products={products} />
         </div>
-        </div>
+      </div>
       <Footer />
     </div>
   );

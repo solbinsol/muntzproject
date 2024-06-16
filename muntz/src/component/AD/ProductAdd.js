@@ -56,7 +56,7 @@ export default function ProductAdd() {
 
   const handleProductAdd = () => {
     axios
-      .post("http://115.23.171.88:5000/api/AddProduct/AddProduct", {
+      .post("http://localhost:5000/api/AddProduct/AddProduct", {
         productName,
         categoryId,
         price,

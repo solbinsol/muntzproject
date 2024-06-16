@@ -1,7 +1,16 @@
+/* @media screen and (max-width:2000px) and (min-width:1000px){
+    .ReviewBox{
+        
+        width: 900px !important;
+        
+    } 
+} */
 @media screen and (max-width:999px) and (min-width:601px)
 {
     .ReviewBox{
+        
         width: 600px !important;
+        
     }
     .Review h3{
         float: left;
@@ -14,7 +23,6 @@
         font-size: 12px !important;
         line-height: 18px !important;
         color: gray;
-        margin-left: 5%;
         
     }
     .ReivewItem img{
@@ -35,20 +43,21 @@
 @media screen and (max-width:600px)
 {
     .ReviewBox{
-        width: 360px !important;
+        width: 350px !important;
+        
+        
     }
     .Review h3{
         float: left;
         width: 100% !important;
-        font-size: 11px !important;
+        font-size: 10px !important;
         margin-top: 0px !important;
         line-height: 3px;
     }
     .ReviewBox span{
-        font-size: 10px !important;
+        font-size: 7px !important;
         line-height: 15px !important;
         color: gray;
-        margin-left: 5%;
         
     }
 
@@ -63,7 +72,7 @@
         font-family: 'Pretendard-Regular';
         margin-left:2.5% !important;
         margin-right: 2.5% !important;
-        font-size: 10px !important;
+        font-size: 9px !important;
         height: 10px !important;
         margin-top: 5px;
     }
@@ -75,7 +84,7 @@
 }
 .Review h3{
     float: left;
-    width: 10%;
+
     margin-top: 5px;
 }
 
@@ -104,10 +113,10 @@
 
 }
 .ReivewItem h3{
-    margin-left: 5%;
     margin-top: 5px;
     font-family: 'Pretendard-Regular' ;
-    width: 50%;
+    width: 100% !important;
+    
 }
 .ReivewItem img{
     width: 100%;
