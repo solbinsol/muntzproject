@@ -1,0 +1,57 @@
+.OrderDetails{
+    width: 100%;
+    font-family: 'Pretendard-Regular';
+}
+.ODContent{
+    width: 360px;
+    margin: 0 auto;
+    height: 650px;
+}
+.ODContent h2{
+    font-family: 'Pretendard-Regular';
+}
+.ODList li{
+    font-family: 'Pretendard-Regular';
+}
+.ODList .ProductName{
+    float: left;
+    width: 125px;
+    margin-left: 5px;
+}
+.ODList .ProdcutIMG{
+    float: left;
+    width: 70px;
+    background-color: blue;
+    height: 80px;
+}
+.ODList .BuyDate p{
+    float: right;
+    font-size: 12px;
+    font-family: 'Pretendard-Regular';
+    color: gray;
+}
+.ProductSize p {
+    width: 285px;
+    margin-left: 5px;
+    float: left;
+    font-family: 'Pretendard-Regular';
+    font-size: 14px;
+}
+.ProductPrice p {
+    width: 285px;
+    margin-left: 5px;
+    float: left;
+    font-size: 14px;
+    font-family: 'Pretendard-Regular';
+}
+.Shipping button{
+    margin-left: 5px;
+    width: 140px;
+    margin-top: 5px;
+    height: 25px;
+    background-color: black;
+    color:white;
+    font-family: 'Pretendard-Regular';
+
+}
+

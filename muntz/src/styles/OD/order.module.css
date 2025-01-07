@@ -42,8 +42,11 @@
 }
 .OrderInput{
     box-sizing: border-box; /* 너비에 padding과 border를 포함하도록 설정 */
-
+    font-family: 'Pretendard-Regular';
     width: 55% ;
+}
+.OrderInput input{
+    font-family: 'Pretendard-Regular';
 }
 .OrderInput select{
     width: 100%;

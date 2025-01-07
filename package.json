@@ -2,6 +2,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "react-daum-postcode": "^3.2.0",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1"
   }

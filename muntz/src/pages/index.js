@@ -32,9 +32,9 @@ export default function Home() {
         <div className={style.Product}>
           <AllProduct></AllProduct>
         </div>
-        <div className={style.FooterBox}>
+        {/* <div className={style.FooterBox}>
           <MainFooter></MainFooter>
-        </div>
+        </div> */}
       </div>
       <Footer></Footer>
 

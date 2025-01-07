@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import Link from 'next/link';
 
 import style from '@/styles/MY/UserInfo.module.css'
 export default function Home() {
@@ -48,6 +48,10 @@ export default function Home() {
               <p className={style.KP}>이름</p>
               <p className={style.EP}>{userInfo.name}</p>
             </div>
+
+            
+
+
           </>
         )}
       </div>

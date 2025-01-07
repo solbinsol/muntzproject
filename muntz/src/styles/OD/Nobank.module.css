@@ -14,7 +14,9 @@
 }
 
 #RI{
-    float: right;
+    float: left;
     margin-top: 15px;
-    width: 68%;
+    width: 20%;
+    text-align: center;
+    font-family: 'Pretendard-Regular';
 }

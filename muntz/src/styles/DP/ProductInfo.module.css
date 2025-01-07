@@ -283,6 +283,8 @@
     float: left;
 }
     .Selecter select{
+        height:  25px;
+        margin-bottom: 5px;
         width: 100%;
         font-family: 'Pretendard-Regular' !important;
 
@@ -292,3 +294,17 @@
 
     }
 
+
+.singleRowTable {
+    height: 90px; /* 테이블이 한줄일 때 : FREE 사이즈*/
+  }
+.singleRowTable table{
+    height: 80px;
+}
+.singleRowTable th{
+    height: 30px;
+}
+  
+.DescriptionP{
+    line-height: 20px;
+}

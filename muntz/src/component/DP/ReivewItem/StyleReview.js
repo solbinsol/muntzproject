@@ -5,23 +5,27 @@ import "slick-carousel/slick/slick-theme.css";
 import style from "@/styles/DP/StyleReview.module.css"
 
 export default function Review(){
+
+
+    
     const settings = {
         dots: false,
         infinite: false,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
+        centerMode: false, // 중앙 정렬을 해제합니다.
         responsive: [
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 3,
-              centerMode: false,
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 3,
+                    centerMode: false, // 반응형에서도 중앙 정렬을 해제합니다.
+                },
             },
-          },
         ],
-      };
-    
+    };
+
     return(
         <div className={style.Review}>
             <div className={style.ReviewBox}>
@@ -32,7 +36,7 @@ export default function Review(){
                     <img src="https://ifh.cc/g/wvsotz.jpg"/>
                     <p className={style.ReivewText}>이 옷은 솰라솰라</p>
                 </div>
-                <div className={style.ReivewItem}>
+                {/* <div className={style.ReivewItem}>
                     <h3>u.name닉넴2</h3><span>date 00/00/00</span>
                     <img src="https://ifh.cc/g/wvsotz.jpg"/>
                     <p className={style.ReivewText}>이 옷은 솰라솰라</p>
@@ -61,7 +65,7 @@ export default function Review(){
                     <h3>u.name닉넴7</h3><span>date 00/00/00</span>
                     <img src="https://ifh.cc/g/wvsotz.jpg"/>
                     <p className={style.ReivewText}>이 옷은 솰라솰라</p>
-                </div>
+                </div> */}
             </Slider>
 
             </div>

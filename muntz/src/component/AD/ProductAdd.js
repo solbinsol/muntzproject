@@ -1,4 +1,3 @@
-// ProductAdd.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import style from "@/styles/AD/ProductAdd.module.css";
@@ -12,9 +11,10 @@ export default function ProductAdd() {
   const [detailPageImage, setDetailPageImage] = useState("");
   const [description, setDescription] = useState("");
   const [sizes, setSizes] = useState([
-    { size: "S", length: 0, chest: 0, shoulder: 0, waist: 0, thigh: 0 },
-    { size: "M", length: 0, chest: 0, shoulder: 0, waist: 0, thigh: 0 },
-    { size: "L", length: 0, chest: 0, shoulder: 0, waist: 0, thigh: 0 },
+    { size: "S", length: null, chest: null, shoulder: null, waist: null, thigh: null },
+    { size: "M", length: null, chest: null, shoulder: null, waist: null, thigh: null },
+    { size: "L", length: null, chest: null, shoulder: null, waist: null, thigh: null },
+    { size: "FREE", length: null, chest: null, shoulder: null, waist: null, thigh: null },
   ]);
 
   const handleCategoryChange = (e) => {
@@ -22,7 +22,6 @@ export default function ProductAdd() {
   };
 
   const renderSizeInputs = () => {
-    // 선택한 카테고리에 따라 동적으로 입력 필드를 생성합니다.
     switch (categoryId) {
       case 1: // 아우터, 상의
       case 2:
@@ -49,12 +48,29 @@ export default function ProductAdd() {
   };
 
   const handleSizeChange = (size, field, value) => {
-    setSizes((prevSizes) =>
-      prevSizes.map((s) => (s.size === size ? { ...s, [field]: value } : s))
-    );
+    if (size === "FREE") {
+      setSizes((prevSizes) =>
+        prevSizes.map((s) =>
+          s.size === "FREE"
+            ? { ...s, [field]: value }
+            : { ...s, size: null, length: null, chest: null, shoulder: null, waist: null, thigh: null }
+        )
+      );
+    } else {
+      setSizes((prevSizes) =>
+        prevSizes.map((s) =>
+          s.size === size
+            ? { ...s, [field]: value }
+            : s.size === "FREE"
+            ? { ...s, size: null, length: null, chest: null, shoulder: null, waist: null, thigh: null }
+            : s
+        )
+      );
+    }
   };
 
   const handleProductAdd = () => {
+    const filteredSizes = sizes.filter((size) => size.size !== null);
     axios
       .post("http://localhost:5000/api/AddProduct/AddProduct", {
         productName,
@@ -64,16 +80,14 @@ export default function ProductAdd() {
         thumbnailImage,
         detailPageImage,
         description,
-        sizes,
+        sizes: filteredSizes,
       })
       .then((response) => {
         console.log(response.data.message);
         window.alert("성공");
-        // 성공 시 추가적인 작업 수행
       })
       .catch((error) => {
         console.error("Error adding product:", error);
-        // 에러 처리
       });
   };
 
@@ -99,10 +113,6 @@ export default function ProductAdd() {
             <p>가격</p>
             <input type="number" onChange={(e) => setPrice(e.target.value)} />
           </div>
-          {/* 추가 
-              블랙, 화이트 이렇게 ,로 구분
-              예를 들어 블랙,화이트 이렇게하면 디비에 같은 프로덕트넘버 블랙 ,화이트 따로 저장
-          */}
           <div className={style.AddInfo}>
             <p>컬러</p>
             <input type="text" onChange={(e) => setColor(e.target.value)} />
@@ -127,26 +137,26 @@ export default function ProductAdd() {
               </thead>
               <tbody>
                 {sizes.map((size) => (
-                  <tr key={size.size}>
+                  <tr key={size.size || "FREE"}>
                     <td>{size.size}</td>
                     <td>
                       <input
                         type="number"
-                        value={size.length}
+                        value={size.length || ""}
                         onChange={(e) => handleSizeChange(size.size, "length", e.target.value)}
                       />
                     </td>
                     <td>
                       <input
                         type="number"
-                        value={size.chest}
+                        value={size.chest || ""}
                         onChange={(e) => handleSizeChange(size.size, "chest", e.target.value)}
                       />
                     </td>
                     <td>
                       <input
                         type="number"
-                        value={size.shoulder}
+                        value={size.shoulder || ""}
                         onChange={(e) => handleSizeChange(size.size, "shoulder", e.target.value)}
                       />
                     </td>
@@ -155,14 +165,14 @@ export default function ProductAdd() {
                         <td>
                           <input
                             type="number"
-                            value={size.waist}
+                            value={size.waist || ""}
                             onChange={(e) => handleSizeChange(size.size, "waist", e.target.value)}
                           />
                         </td>
                         <td>
                           <input
                             type="number"
-                            value={size.thigh}
+                            value={size.thigh || ""}
                             onChange={(e) => handleSizeChange(size.size, "thigh", e.target.value)}
                           />
                         </td>

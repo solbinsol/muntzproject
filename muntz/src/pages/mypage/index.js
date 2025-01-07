@@ -17,7 +17,7 @@ export default function Home() {
         <dlv className={style.MyNav}>
             <ul>
                 <h2>SHOPING</h2>
-                <Link href=""><li id={style.TLi}><h3>주문/배송 내역</h3></li></Link>
+                <Link href="/mypage/orderdetails"><li id={style.TLi}><h3>주문/배송 내역</h3></li></Link>
                 <Link href=""><li><h3>환불/교환 내역</h3></li></Link>
                 <Link href=""><li><h3>후기 관리</h3></li></Link>
             </ul>
