@@ -1,0 +1,21 @@
+.OrderDetailPage{
+    width: 30%;
+
+    margin: 0 auto;
+    margin-top: 10%;
+}
+.OrderDetailPage h1{
+    font-family: 'Pretendard-Regular';
+    text-align: center;
+}
+
+.OrderDetailPage p{
+    font-family: 'Pretendard-Regular';
+    text-align: center;
+    font-size: 22px;
+    margin-top: 10px;
+}
+.OrderDetailPage span{
+    font-weight: bold;
+    text-decoration: underline;
+}

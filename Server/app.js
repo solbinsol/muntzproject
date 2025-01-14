@@ -10,9 +10,10 @@ const AddProductRouter = require('./api/AddProduct');
 const colorRouter = require('./api/color');
 const stockcheckRouter = require('./api/stockcheck');
 const deleteRouter = require('./api/product_delete');
-
+const updateStockOnPurchaseRouter = require('./api/updateStockOnPurchase');
 const bodyParser = require('body-parser');
-
+const orderlistRouter = require('./api/orderlist'); 
+const orderdetailRouter = require('./api/orderdetail'); // orderdetail 라우터
 const cors = require('cors');
 const app = express();
 
@@ -39,7 +40,9 @@ app.use('/api/user_likes', likesRouter);
 app.use('/api/AddProduct', AddProductRouter);
 app.use('/api/color', colorRouter);
 app.use('/api/stockcheck', stockcheckRouter);
-
+app.use('/api/orderlist', orderlistRouter);
+app.use('/api/updateStockOnPurchase', updateStockOnPurchaseRouter);
+app.use('/api/orderdetail', orderdetailRouter); // /api/orderdetail 경로로 요청이 오면 orderdetail 라우터를 처리
 app.get('/', (req, res) => {
   res.send('Hello, Worldtestdd!'); // 또는 클라이언트에게 전송할 다른 콘텐츠
 });

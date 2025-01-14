@@ -5,48 +5,80 @@
 .ODContent{
     width: 360px;
     margin: 0 auto;
-    height: 650px;
 }
 .ODContent h2{
     font-family: 'Pretendard-Regular';
 }
+.ODList{
+    width: 100%;
+    float: left;
+    
+}
 .ODList li{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    height: 110px;
+    padding: 5px;
+    margin-bottom:10px;
     font-family: 'Pretendard-Regular';
 }
 .ODList .ProductName{
     float: left;
-    width: 125px;
     margin-left: 5px;
 }
 .ODList .ProdcutIMG{
     float: left;
     width: 70px;
-    background-color: blue;
+    background-color: red;
+    
     height: 80px;
 }
+.ProdcutIMG img{
+    width: 100%;
+    height: 100%;
+}
 .ODList .BuyDate p{
+
     float: right;
-    font-size: 12px;
+    font-size: 11px;
+    margin-top: 2px;
+
+
     font-family: 'Pretendard-Regular';
     color: gray;
 }
+.ProductSize{
+    float: left;
+    
+}
 .ProductSize p {
-    width: 285px;
+    width: 100%;
     margin-left: 5px;
     float: left;
+    margin-top: 3px;
     font-family: 'Pretendard-Regular';
     font-size: 14px;
 }
 .ProductPrice p {
-    width: 285px;
+    width: 100%;
     margin-left: 5px;
+    margin-top: 3px;
     float: left;
     font-size: 14px;
     font-family: 'Pretendard-Regular';
 }
+.Shipping{
+    width: 100%;
+    
+    float: left;
+}
+.JoinBtn{
+    margin-right: 3%;
+    
+}
 .Shipping button{
-    margin-left: 5px;
-    width: 140px;
+    float: left;
+    
+    width: 48.5%;
     margin-top: 5px;
     height: 25px;
     background-color: black;
@@ -55,3 +87,8 @@
 
 }
 
+
+.ProductName p{
+    font-size: 14px;
+    font-family: 'Pretendard-Regular';
+}

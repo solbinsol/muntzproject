@@ -16,6 +16,7 @@ export default function DetailPage() {
     const [stockData, setStockData] = useState([]);
     const [colors, setColors] = useState([]);
     const [selectedColor, setSelectedColor] = useState("");
+    const [selectedSize, setSelectedSize] = useState("");
 
     useEffect(() => {
         if (product) {
@@ -94,6 +95,29 @@ export default function DetailPage() {
         fetchProduct();
     }, [router.query.product_id, selectedColor]);
 
+
+    const handleBuyNow = () => {
+        if (!selectedSize) {
+            alert("사이즈 옵션을 선택해주세요.");
+            return;
+        }
+
+        const isOutOfStock = stockData[0][selectedSize] === 0;
+        if (isOutOfStock) {
+            alert("품절된 사이즈입니다.");
+            return;
+        }
+
+        router.push({
+            pathname: '/order',
+            query: {
+                product_id: currentProductID,
+                color: selectedColor,
+                size: selectedSize,
+            },
+        });
+    };
+        
     const toggleLike = async () => {
         try {
             if (!currentUserID) {
@@ -211,17 +235,18 @@ export default function DetailPage() {
                                             </option>
                                         ))}
                                     </select>
-                                    <select>
-                                        <option>사이즈종류</option>
-                                        {stockData.length > 0 &&
-                                            Object.keys(stockData[0])
-                                                .filter((size) => stockData[0][size] !== null)
-                                                .map((size) => (
-                                                    <option key={size} value={size}>
-                                                        {stockData[0][size] === 0 ? `${size} (품절)` : size}
-                                                    </option>
-                                                ))}
+                                    <select onChange={(e) => setSelectedSize(e.target.value)}>
+                                    <option>사이즈종류</option>
+                                    {stockData.length > 0 &&
+                                        Object.keys(stockData[0])
+                                        .filter((size) => stockData[0][size] !== null)
+                                        .map((size) => (
+                                            <option key={size} value={size}>
+                                            {stockData[0][size] === 0 ? `${size} (품절)` : size}
+                                            </option>
+                                        ))}
                                     </select>
+
                                 </div>
                                 <div className={`${style.SizeTable} ${product.sizes.length === 1 && product.sizes[0].size === 'FREE' ? style.singleRowTable : ''}`}>
                                     <p className={style.TableT}>* 측정 방식에 따라 약간의 차이가 있을 수 있습니다. </p>
@@ -259,9 +284,10 @@ export default function DetailPage() {
                                     </table>
                                 </div>
                                 <div className={style.BtnBox}>
-                                    <Link href={{ pathname: '/order', query: { product_id: currentProductID } }}>
-                                        <button className={style.BtnBuy}>BUY NOW</button>
-                                    </Link>
+                                    <button className={style.BtnBuy}  onClick={handleBuyNow}>BUY NOW</button>
+
+
+
 
                                     <button
                                         className={`${style.BtnLike} ${

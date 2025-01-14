@@ -1,0 +1,9 @@
+/* 사이드바 폰트 크기 조정 */
+.monaco-workbench .explorer-viewlet .monaco-tree .monaco-tree-row {
+    font-size: 20px !important;
+}
+
+/* 아이콘과 간격 조정 */
+.monaco-workbench .explorer-viewlet .monaco-tree .monaco-tree-row .label-name {
+    padding-left: 10px !important;
+}

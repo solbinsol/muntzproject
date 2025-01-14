@@ -28,7 +28,7 @@ export default function Header() {
       <div className={style.LogoBox}>
         <div className={style.MG}>
         <Link href="/">
-          <img className={style.LogoImg} src="image/logo.jpg" alt="Logo" />
+          <img className={style.LogoImg} src="image/Logo.jpg" alt="Logo" />
           <span className={style.Logo}>muntz</span>
         </Link>
         </div>

@@ -1,10 +1,9 @@
 import style from '@/styles/OD/order.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Header from '@/component/Header';
 import Footer from '@/component/Footer';
 import PostcodeModal from '@/component/OD/Post/DaumPost';
-
-
 
 import CardPayment from '@/component/OD/CardPayment';
 import NoBank from '@/component/OD/NoBank';
@@ -12,12 +11,36 @@ import KakaoPay from '@/component/OD/KakaoPay';
 import NaverPay from '@/component/OD/NaverPay';
 
 export default function OrderPage() {
+  const [isTermsChecked, setIsTermsChecked] = useState(false); // 약관 동의 체크 상태
+  const [isPersonalChecked, setIsPersonalChecked] = useState(false); // 개인정보 동의 체크
   const [showTextarea, setShowTextarea] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [PersonalVisible, setPersonalVisible] = useState(false);
   const [termsVisible, setTermsVisible] = useState(false);
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState(''); // 배송지 상태
   const [showPostcode, setShowPostcode] = useState(false);
+  const [product, setProduct] = useState(null); // 상품 데이터를 저장할 상태
+  const router = useRouter();
+  const { product_id } = router.query; // 쿼리에서 product_id 추출
+  const { color, size } = router.query; // URL 쿼리에서 color와 size 가져오기
+
+  useEffect(() => {
+    if (!product_id) return; // product_id가 없으면 실행하지 않음
+
+    // API에서 상품 데이터 가져오기
+    const fetchProductData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/product/${product_id}`);
+        if (!response.ok) throw new Error('상품 정보를 가져오지 못했습니다.');
+        const data = await response.json();
+        setProduct(data); // 상태에 저장
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+
+    fetchProductData();
+  }, [product_id]);
 
   const toggleTerms = () => {
     setTermsVisible(!termsVisible);
@@ -36,14 +59,23 @@ export default function OrderPage() {
     }
   };
 
-  const handlePaymentSelect = (payment) => {
-    setSelectedPayment(payment);
+  const handleCompletePostcode = (data) => {
+    setAddress(data.roadAddress);
+    setShowPostcode(false);
   };
 
-  // 주소 선택 후 처리
-  const handleCompletePostcode = (data) => {
-    setAddress(data.roadAddress);  // 선택된 주소를 상태에 저장
-    setShowPostcode(false);  // 주소 입력 창 닫기
+  const handlePaymentSelect = (payment) => {
+    if (!isTermsChecked || !isPersonalChecked) {
+      alert('모든 필수 약관에 동의해주세요.');
+      return;
+    }
+
+    if (!address) {
+      alert('배송지를 입력해주세요.');
+      return;
+    }
+
+    setSelectedPayment(payment);
   };
 
   return (
@@ -69,7 +101,7 @@ export default function OrderPage() {
                   <input
                     type="text"
                     value={address}
-                    onClick={() => setShowPostcode(true)}  // 클릭 시 모달 열기
+                    onClick={() => setShowPostcode(true)}
                     readOnly
                   />
                 </td>
@@ -91,40 +123,64 @@ export default function OrderPage() {
           </table>
 
           <h3 className={style.MT}>상품 정보</h3>
-          <div className={style.ProductInfo}>
-            <img src="1.jpg" alt="상품 이미지" />
-            <div className={style.ProductInfoText}>
-              <p>상품 이름</p>
-              <p>사이즈 : S</p>
-              <p>색상 : black</p>
-              <p>총금액 : 19,000</p>
+          {product ? (
+            <div className={style.ProductInfo}>
+              <img src={product.thumbnail_image} alt="상품 이미지" />
+              <div className={style.ProductInfoText}>
+                <p>{product.product_name}</p>
+                <p>
+                  선택한 옵션: {size ? `사이즈: ${size}` : "사이즈 미선택"}</p> <p>  {color ? `컬러: ${color}` : "컬러 미선택"}</p>
+                <p>가격: {product.price}</p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <p>상품 정보를 불러오는 중입니다...</p>
+          )}
 
-          <h3 className={style.MT}>결제 방식</h3>
+          <h3 className={style.MT} id={style.MT2}>결제 방식</h3>
           <div className={style.PaymentType}>
             <table>
               <tbody>
                 <tr>
-                  <td onClick={() => handlePaymentSelect('card')} className={selectedPayment === 'card' ? style.SelectedPayment : null}>신용카드</td>
+                  <td
+                    onClick={() => handlePaymentSelect('card')}
+                    className={selectedPayment === 'card' ? style.SelectedPayment : null}
+                  >
+                    신용카드
+                  </td>
                 </tr>
                 <tr>
-                  <td onClick={() => handlePaymentSelect('noBank')} className={selectedPayment === 'noBank' ? style.SelectedPayment : null}>무통장입금</td>
+                  <td
+                    onClick={() => handlePaymentSelect('noBank')}
+                    className={selectedPayment === 'noBank' ? style.SelectedPayment : null}
+                  >
+                    무통장입금
+                  </td>
                 </tr>
                 <tr>
-                  <td onClick={() => handlePaymentSelect('kakaoPay')} className={selectedPayment === 'kakaoPay' ? style.SelectedPayment : null}>카카오페이</td>
+                  <td
+                    onClick={() => handlePaymentSelect('kakaoPay')}
+                    className={selectedPayment === 'kakaoPay' ? style.SelectedPayment : null}
+                  >
+                    카카오페이
+                  </td>
                 </tr>
                 <tr>
-                  <td onClick={() => handlePaymentSelect('naverPay')} className={selectedPayment === 'naverPay' ? style.SelectedPayment : null}>네이버페이</td>
+                  <td
+                    onClick={() => handlePaymentSelect('naverPay')}
+                    className={selectedPayment === 'naverPay' ? style.SelectedPayment : null}
+                  >
+                    네이버페이
+                  </td>
                 </tr>
               </tbody>
             </table>
 
             <div className={style.CB}>
-                {selectedPayment === 'card' && <CardPayment />}
-                {selectedPayment === 'noBank' && <NoBank />}
-                {selectedPayment === 'kakaoPay' && <KakaoPay />}
-                {selectedPayment === 'naverPay' && <NaverPay />}
+              {selectedPayment === 'card' && <CardPayment />}
+              {selectedPayment === 'noBank' && <NoBank />}
+              {selectedPayment === 'kakaoPay' && <KakaoPay />}
+              {selectedPayment === 'naverPay' && <NaverPay />}
             </div>
 
             <div className={style.Agree}>
@@ -132,24 +188,42 @@ export default function OrderPage() {
                 <tbody>
                   <tr>
                     <td>
-                      <input type="checkbox" />
-                      <span> [필수] 이용약관 동의 <span onClick={toggleTerms} className={style.drop}><img src="image/icon/drop.png" /></span></span>
+                      <input
+                        type="checkbox"
+                        checked={isTermsChecked}
+                        onChange={() => setIsTermsChecked(!isTermsChecked)}
+                      />
+                      <span>
+                        [필수] 이용약관 동의
+                        <span onClick={toggleTerms} className={style.drop}>
+                          <img src="image/icon/drop.png" />
+                        </span>
+                      </span>
                     </td>
                   </tr>
-                  <tr>
-                    {termsVisible && (
+                  {termsVisible && (
+                    <tr>
                       <td>
                         <div className={`${style.Terms} ${termsVisible ? style.visible : style.hidden}`}>
                           <p>이용약관 내용</p>
                           <p>솰라솰라솰라솰라솰라솰라솰라솰라솰라솰라</p>
                         </div>
                       </td>
-                    )}
-                  </tr>
+                    </tr>
+                  )}
                   <tr>
                     <td>
-                      <input type="checkbox" />
-                      <span> [필수] 개인정보 수집 및 이용 동의 <span onClick={togglePersonnal} className={style.drop}><img src="image/icon/drop.png" /></span></span>
+                      <input
+                        type="checkbox"
+                        checked={isPersonalChecked}
+                        onChange={() => setIsPersonalChecked(!isPersonalChecked)}
+                      />
+                      <span>
+                        [필수] 개인정보 수집 및 이용 동의
+                        <span onClick={togglePersonnal} className={style.drop}>
+                          <img src="image/icon/drop.png" />
+                        </span>
+                      </span>
                     </td>
                   </tr>
                   {PersonalVisible && (
@@ -165,14 +239,12 @@ export default function OrderPage() {
               </table>
             </div>
 
-            <button className={style.Buy}>결제하기</button>
           </div>
         </div>
       </div>
 
       <Footer />
 
-      {/* 모달 컴포넌트 추가 */}
       {showPostcode && <PostcodeModal onComplete={handleCompletePostcode} onClose={() => setShowPostcode(false)} />}
     </div>
   );
