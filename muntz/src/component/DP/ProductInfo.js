@@ -85,7 +85,7 @@ export default function DetailPage() {
                     isInBasket: userLikeResponse?.data.basket === 1,
                 };
                 setProduct(productWithDetailsAndSize);
-
+                
                 await axios.post('http://localhost:5000/api/increase-view-count', { product_id });
             } catch (error) {
                 console.error('API 호출 오류:', error);

@@ -1,0 +1,36 @@
+.ReviewTab {
+    position: fixed; /* 화면 고정 */
+    top: 25%; /* 화면 중앙 위치 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 중앙 정렬 */
+    width: 80%; /* 적당한 너비 */
+    max-width: 600px !important; /* 최대 너비 */
+    background-color: white; /* 흰색 배경 */
+    border-radius: 8px; /* 둥근 모서리 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* 그림자 효과 */
+    padding: 20px; /* 내부 여백 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+  }
+  
+.ReviewBox button{
+    cursor: pointer;
+    height: 30px;
+    background-color: black;
+    color:  white;
+    font-family: 'Pretendard-Regular' ;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.StyleBtn{
+    margin-right: 5px;
+}
+.LeftBtn{
+    float: left;
+}
+.RightBtn{
+    float: right;
+}
+.CloseBtn{
+    background-color: gray !important;
+}

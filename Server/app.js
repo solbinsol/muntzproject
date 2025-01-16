@@ -3,6 +3,7 @@ const express = require('express');
 const productsRouter = require('./api/products');
 const detailRouter = require('./api/detail'); 
 const sizeRouter = require('./api/size');
+const view_detailRouter = require('./api/view_detail');
 const stockRouter = require('./api/stock');
 const authRouter = require('./api/auth'); 
 const likesRouter = require('./api/user_likes'); 
@@ -13,6 +14,10 @@ const deleteRouter = require('./api/product_delete');
 const updateStockOnPurchaseRouter = require('./api/updateStockOnPurchase');
 const bodyParser = require('body-parser');
 const orderlistRouter = require('./api/orderlist'); 
+const style_reviewRouter = require('./api/style_review'); 
+const view_style_reviewRouter = require('./api/view_style_review'); 
+const view_basic_reviewRouter = require('./api/view_basic_review'); 
+const basic_reviewRouter = require('./api/basic_review'); 
 const orderdetailRouter = require('./api/orderdetail'); // orderdetail 라우터
 const cors = require('cors');
 const app = express();
@@ -38,9 +43,14 @@ app.use('/api/stock', stockRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/user_likes', likesRouter);
 app.use('/api/AddProduct', AddProductRouter);
+app.use('/api/style_review', style_reviewRouter);
+app.use('/api/view_detail', view_detailRouter);
 app.use('/api/color', colorRouter);
+app.use('/api/view_style_review', view_style_reviewRouter);
+app.use('/api/view_basic_review', view_basic_reviewRouter);
 app.use('/api/stockcheck', stockcheckRouter);
 app.use('/api/orderlist', orderlistRouter);
+app.use('/api/basic_review', basic_reviewRouter);
 app.use('/api/updateStockOnPurchase', updateStockOnPurchaseRouter);
 app.use('/api/orderdetail', orderdetailRouter); // /api/orderdetail 경로로 요청이 오면 orderdetail 라우터를 처리
 app.get('/', (req, res) => {

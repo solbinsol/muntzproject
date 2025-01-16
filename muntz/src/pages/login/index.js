@@ -67,7 +67,7 @@ export default function Login() {
             LOGIN
           </button>                    <div className={style.BottomBtn}>
                         <button className={style.btnKL}><img src="./image/kakao2.png"></img></button>
-                        <button className={style.btnSignUp}>SignUp</button>
+                        <Link href='/signup'><button className={style.btnSignUp}>SignUp</button></Link>
                     </div>
                     <div className={style.TT}>
                         <p>아이디 찾기</p><p className={style.R}>비밀번호 찾기</p>

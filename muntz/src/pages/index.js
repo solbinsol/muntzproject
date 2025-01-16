@@ -17,7 +17,7 @@ export default function Home() {
     <div className={style.MainPage}>
       <Header></Header>
         <div className={style.MainImg}>
-          <img src='image/testMain2.jpg'/>
+          <img src='image/Main2.png'/>
         </div>
       <div className={style.MainContent}>
         <div className={style.MainSnap}>

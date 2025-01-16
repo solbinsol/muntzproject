@@ -7,10 +7,12 @@
 .MainImg{
     width: 100%;
     float: left;
+
 }
 .MainImg img{
     width: 100%;
-    object-fit: contain;
+    height: 600px;
+    
     margin: 0;
     padding: 0;
 }

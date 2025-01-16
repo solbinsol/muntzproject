@@ -6,7 +6,7 @@ import Header from "@/component/Header";
 import axios from "axios";
 import ProductInfo from "@/component/DP/ProductInfo";
 import Review from "@/component/DP/Review";
-
+import DetailView from "@/component/DP/DetailView"
 
 export default function DetailPage() {
     const [selectedTab, setSelectedTab] = useState('description');
@@ -19,8 +19,9 @@ export default function DetailPage() {
 useEffect(() => {
     const fetchProduct = async () => {
         const { product_id } = router.query;
-
+        console.log("DP : " + product_id);
         try {
+            {/** 
             if (!product_id) {
                 console.error('Product ID is not provided.');
                 return;
@@ -43,7 +44,7 @@ useEffect(() => {
             // 제품의 재고 정보를 가져오는 API
             const stockResponse = await axios.get(`http://localhost:5000/api/stock/${product_id}`);
             console.log('Stock API Response:', stockResponse.data);
-
+            
             // 받아온 상품 정보, ProductDetails 정보, 사이즈 정보, 재고 정보를 합쳐서 상태에 저장
             const productWithDetailsAndSize = { 
                 ...productResponse.data, 
@@ -52,6 +53,7 @@ useEffect(() => {
                 stock: stockResponse.data 
             };
             setProduct(productWithDetailsAndSize);
+            */}
         } catch (error) {
             console.error('API 호출 오류:', error);
         }
@@ -59,13 +61,17 @@ useEffect(() => {
 
     fetchProduct();
 }, [router.query.product_id]);
-
+  
   return (
     <div className={style.DP}>
       <Header />
       <div className={style.DetailPage}>
         <ProductInfo></ProductInfo>
-        <Review></Review>
+        <div className={style.DetailView}>
+          <img src='/image/detailMain.png'></img>
+          <DetailView productId={router.query.product_id}/>
+        </div>
+        <Review productId={router.query.product_id} /> 
       </div>
       <Footer />
     </div>

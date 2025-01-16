@@ -1,6 +1,6 @@
 .OrderDetailPage{
     width: 30%;
-
+    
     margin: 0 auto;
     margin-top: 10%;
 }
@@ -8,6 +8,7 @@
     font-family: 'Pretendard-Regular';
     text-align: center;
 }
+
 
 .OrderDetailPage p{
     font-family: 'Pretendard-Regular';

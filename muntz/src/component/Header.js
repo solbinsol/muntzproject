@@ -5,6 +5,7 @@ import style from '@/styles/Header.module.css';
 export default function Header() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
+  const [userID, setUserID] = useState('');
 
   useEffect(() => {
     // 로컬 스토리지에서 user 정보를 가져와서 로그인 상태 확인
@@ -12,6 +13,7 @@ export default function Header() {
     if (user && user.name) {
       setLoggedIn(true);
       setUserName(user.name);
+      setUserID(user.user_id);
     }
   }, []);
 
@@ -43,7 +45,7 @@ export default function Header() {
         <ul className={style.RMenu}>
           {loggedIn ? (
             <>
-              <li className={style.SU} onClick={handleLogout}> Logout</li>
+              <Link href='/'><li className={style.SU} onClick={handleLogout}> Logout</li></Link>
               <Link href="/mypage"><li className={style.UN}>{userName} </li></Link>
             </>
           ) : (

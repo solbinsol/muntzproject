@@ -61,6 +61,7 @@ export default function ProductAdd() {
     })
       .then(response => {
         // 서버로부터의 응답 처리
+        window.alert("재고 등록 완료")
         console.log(response.data);
       })
       .catch(error => {

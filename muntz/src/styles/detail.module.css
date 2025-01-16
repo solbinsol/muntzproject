@@ -129,3 +129,12 @@
     margin-bottom: 5px;
     font-family: 'Pretendard-Regular' !important;
 }
+.DetailView{
+    width: 53%;
+    
+    float: left;
+    margin-left: 23.5%;
+}
+.DetailView img{
+    width: 100%;
+}

@@ -2,9 +2,13 @@
     width: 100%;
     font-family: 'Pretendard-Regular';
 }
+.OrderDetails p{
+    font-family: 'Pretendard-Regular';
+}
 .ODContent{
     width: 360px;
     margin: 0 auto;
+    height: 62vh;
 }
 .ODContent h2{
     font-family: 'Pretendard-Regular';
@@ -48,15 +52,18 @@
 }
 .ProductSize{
     float: left;
+    width: 80%;
+
     
 }
 .ProductSize p {
     width: 100%;
     margin-left: 5px;
     float: left;
-    margin-top: 3px;
+    margin-top: 5px;
     font-family: 'Pretendard-Regular';
     font-size: 14px;
+    color : gray;
 }
 .ProductPrice p {
     width: 100%;
